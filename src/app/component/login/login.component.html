@@ -1,0 +1,12 @@
+<main>
+    <h1>MySmallGroup - Login</h1>
+
+    <form>
+        <div>
+            <label>{{intl.translate("login_password")}} <input [type]="inputType"/></label>
+            <span class="material-symbols-outlined" (click)="toggleInput($event)">{{inputType === "password" ? "visibility" : "visibility_off"}}</span>
+        </div>
+        
+        <button>{{intl.translate("login_entry_button")}}</button>
+    </form>
+</main>
