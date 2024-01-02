@@ -44,6 +44,14 @@ export class TranslateService {
       "pt-br": "Entrar",
       "en-us": "Log in",
     },
+    "invalid_password": {
+      "pt-br": "Senha inválida!",
+      "en-us": "Invalid Password!",
+    },
+    "success_password": {
+      "pt-br": "Sucesso!",
+      "en-us": "Success!",
+    },
     "": {
       "pt-br": "",
       "en-us": "",

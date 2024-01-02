@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { clearTokens, getInfo, saveTokensInSessionStorage } from 'src/app/helpers/base_request';
 import { TranslateService } from 'src/app/service/translate.service';
 
 @Component({
@@ -8,6 +9,12 @@ import { TranslateService } from 'src/app/service/translate.service';
 })
 export class LoginComponent {
   inputType = "password";
+  passcode = "";
+
+  invalidPasswordMessage = "";
+  // invalidPasswordMessage = this.intl.translate("invalid_password");
+  isLoading = false;
+  // isLoading = true;
 
   constructor(public intl: TranslateService){}
 
@@ -16,4 +23,20 @@ export class LoginComponent {
     this.inputType = this.inputType === "password" ? "text" : "password";
   }
 
+  async loginAttempt(){
+    this.isLoading = true;
+
+    let res = await getInfo(this.passcode);
+
+    if (res?.error === "wrong password"){
+      this.invalidPasswordMessage = this.intl.translate("invalid_password");
+      clearTokens();      
+    }
+    else{
+      this.invalidPasswordMessage = this.intl.translate("success_password");
+      saveTokensInSessionStorage(res);
+    }
+
+    this.isLoading = false;
+  }
 }
