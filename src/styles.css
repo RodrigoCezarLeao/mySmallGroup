@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+* {margin: 0px; padding: 0px; font-family: 'Roboto', sans-serif;}
+
+body {
+    background: linear-gradient(180deg, var(--bege), var(--dark-pink));
+    background-attachment: fixed;
+ }
+
+:root {
+    --bege: #F8B195;
+    --pink: #F67280;
+    --dark-pink: #C06C84;
+    --purple: #6C5B7B;
+    --blue: #355C7D;
+}
