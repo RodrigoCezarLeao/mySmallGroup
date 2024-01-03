@@ -5,6 +5,7 @@ main {
     height: 100vh;
     justify-content: center;
     gap: 75px;
+    color: var(--wine);
 }
 
 main form {
@@ -55,6 +56,7 @@ main form button:disabled {
 
 main span#custom_info {
     position: absolute;
+    font-weight: 700;
 }
 
 span.rotate-always {

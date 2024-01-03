@@ -10,11 +10,8 @@ import { TranslateService } from 'src/app/service/translate.service';
 export class LoginComponent {
   inputType = "password";
   passcode = "";
-
   invalidPasswordMessage = "";
-  // invalidPasswordMessage = this.intl.translate("invalid_password");
   isLoading = false;
-  // isLoading = true;
 
   constructor(public intl: TranslateService){}
 
