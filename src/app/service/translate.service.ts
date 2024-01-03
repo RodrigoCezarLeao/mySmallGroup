@@ -52,6 +52,15 @@ export class TranslateService {
       "pt-br": "Sucesso!",
       "en-us": "Success!",
     },
+    "alert_confirm_small_group_title_edition": {
+      "pt-br": "Deseja trocar o nome do grupo de '@var' para '@var'?",
+      "en-us": "Confirm small group name from '@var' to '@var'?",
+    },
+    // No use
+    "alert_error_empty_title_edition": {
+      "pt-br": "O campo do título está vazio.",
+      "en-us": "Title field is empty.",
+    },
     "": {
       "pt-br": "",
       "en-us": "",

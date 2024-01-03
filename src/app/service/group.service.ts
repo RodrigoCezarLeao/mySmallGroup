@@ -25,4 +25,37 @@ export class GroupService {
     return (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery))?.data?.group;
   }
 
+  async updateGroupName(name: string){
+    const token = getsavedTokensInSessionStorage();
+
+    const cmsQuery = { 
+      query : `
+          mutation {
+              updateGroup(data: {
+                name: "${name}",                
+              }, where: {id: "${token.groupID}"}) { id }
+          }
+    `};
+    
+    const res = (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery))?.data?.updateGroup;
+    await this.publishGroup();
+    return res;
+  }
+
+  async publishGroup(){
+    const token = getsavedTokensInSessionStorage();
+
+    const cmsQuery = {
+        query: `
+            mutation {
+                publishGroup(to:PUBLISHED, where:{id: "${token.groupID}"}) {
+                    id
+                }
+            }
+        `
+    };
+
+    return (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery));
+  }
+
 }
