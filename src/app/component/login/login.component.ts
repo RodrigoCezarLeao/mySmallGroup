@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { clearTokens, getInfo, saveTokensInSessionStorage } from 'src/app/helpers/base_request';
 import { TranslateService } from 'src/app/service/translate.service';
 
@@ -13,7 +14,10 @@ export class LoginComponent {
   invalidPasswordMessage = "";
   isLoading = false;
 
-  constructor(public intl: TranslateService){}
+  constructor(
+    public intl: TranslateService,
+    private router: Router
+  ){}
 
   toggleInput(event: Event){
     event.preventDefault();
@@ -32,6 +36,7 @@ export class LoginComponent {
     else{
       this.invalidPasswordMessage = this.intl.translate("success_password");
       saveTokensInSessionStorage(res);
+      this.router.navigate(['/home']);
     }
 
     this.isLoading = false;
