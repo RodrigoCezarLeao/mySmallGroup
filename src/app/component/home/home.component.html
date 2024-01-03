@@ -1,3 +1,35 @@
-<h1>{{group.name}}</h1>
+<main>
+    <span class="material-symbols-outlined" (click)="logout()" id="logout">logout</span>
 
-<span class="material-symbols-outlined" (click)="logout()" id="logout">logout</span>
+    <div>
+        <h1 [class]="!editTitle ? 'visible' : 'not_visible'">{{group.name}}</h1>
+        
+        <input 
+            id="edit_title_input" 
+            type="text" 
+            [class]="editTitle ? 'visible' : 'not_visible'" 
+            [value]="newGroupTitle" 
+            [(ngModel)]="newGroupTitle"
+            (keypress)="handleSmallGroupTitleTyping($event)"
+            #editTitleInput
+        />
+
+        <div>
+            <span 
+                class="material-symbols-outlined" 
+                (click)="!editTitle ? editSmallGroupTitle() : cancelSmallGroupTitleEdition()"
+            >
+                {{editTitle ? 'close' : 'edit'}}
+            </span>
+            <span
+                *ngIf="editTitle"
+                class="material-symbols-outlined" 
+                (click)="updateSmallGroupTitle()"
+            >
+                check
+            </span>
+        </div>
+    </div>
+    
+    
+</main>

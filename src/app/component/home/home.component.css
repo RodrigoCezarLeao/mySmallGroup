@@ -1,3 +1,32 @@
+main {}
+
+main > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 40px;
+}
+
+main div h1 {cursor: default;}
+
+main span {cursor: pointer;}
+
+
+.not_visible {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: inherit;
+}
+
+main input#edit_title_input {
+    font-size: 1.4em;
+    position: absolute;
+    text-align: center;
+}
+
 span#logout {
     cursor: pointer;
     position: absolute;
