@@ -10,7 +10,6 @@ import { TranslateService } from 'src/app/service/translate.service';
 export class LoginComponent {
   inputType = "password";
   passcode = "";
-
   invalidPasswordMessage = "";
   isLoading = false;
 
