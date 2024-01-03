@@ -12,9 +12,7 @@ export class LoginComponent {
   passcode = "";
 
   invalidPasswordMessage = "";
-  // invalidPasswordMessage = this.intl.translate("invalid_password");
   isLoading = false;
-  // isLoading = true;
 
   constructor(public intl: TranslateService){}
 
