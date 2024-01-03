@@ -37,12 +37,36 @@ main form div span, main form button {
 
 main form button { 
     width: 70%;
-    background: var(--purple);
+    background: var(--blue);
     color: var(--bege);
     border: 2px solid var(--bege);
     border-radius: 5px;
 }
 
-main form button:hover {
+.buttonEnable:hover {
     box-shadow: 0px 0px 30px var(--bege);
 }
+
+main form button:disabled {
+    background: var(--dark-pink);
+    cursor: default !important;
+    opacity: 0.6;
+}
+
+main span#custom_info {
+    position: absolute;
+}
+
+span.rotate-always {
+    animation: spin 3s infinite linear;
+    position: absolute;
+}
+
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
