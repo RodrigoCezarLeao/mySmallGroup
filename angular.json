@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "current-directory": {
+    "mySmallGroup": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "current-directory:build:production"
+              "browserTarget": "mySmallGroup:build:production"
             },
             "development": {
-              "browserTarget": "current-directory:build:development"
+              "browserTarget": "mySmallGroup:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "current-directory:build"
+            "browserTarget": "mySmallGroup:build"
           }
         },
         "test": {
