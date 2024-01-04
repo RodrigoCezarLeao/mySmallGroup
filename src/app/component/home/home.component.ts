@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { checkIfLoggedIn, clearTokens, getsavedTokensInSessionStorage } from 'src/app/helpers/base_request';
 import { emptyGroup, group } from 'src/app/interface/group';
@@ -16,8 +16,9 @@ export class HomeComponent {
   group: group = emptyGroup;
   newGroupTitle = "";
   editTitle = false;
+  isUpdatingTitle = false;
 
-  constructor(private router: Router, private groupService: GroupService, public intl: TranslateService){
+  constructor(private router: Router, private groupService: GroupService, public intl: TranslateService, private changeDetectorRef: ChangeDetectorRef){
     if (!checkIfLoggedIn())
       this.router.navigate(["/"]);
     else
@@ -48,21 +49,25 @@ export class HomeComponent {
     this.editTitle = false;
   }
   async updateSmallGroupTitle(){
-    if (!this.newGroupTitle){
-      return;
-    }
+    if (!this.newGroupTitle)
+      return;    
 
     if (this.newGroupTitle === this.group.name)
       return;
 
+    
     if(confirm(this.intl.translateWithParams("alert_confirm_small_group_title_edition", [this.group.name, this.newGroupTitle]))){
+      this.isUpdatingTitle = true;
+
       const res = await this.groupService.updateGroupName(this.newGroupTitle);
       const token = getsavedTokensInSessionStorage();
 
       if (res.id === token.groupID){
-        // this.cancelSmallGroupTitleEdition();
-        location.reload();
-      }      
+        this.group.name = this.newGroupTitle;
+        this.cancelSmallGroupTitleEdition();
+      }
+
+      this.isUpdatingTitle = false;
     }
   }
 }

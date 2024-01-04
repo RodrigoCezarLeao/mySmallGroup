@@ -2,6 +2,7 @@
     <span class="material-symbols-outlined" (click)="logout()" id="logout">logout</span>
 
     <div>
+        <span class="material-symbols-outlined rotate-always" id="title_loading" *ngIf="isUpdatingTitle">progress_activity</span>
         <h1 [class]="!editTitle ? 'visible' : 'not_visible'">{{group.name}}</h1>
         
         <input 

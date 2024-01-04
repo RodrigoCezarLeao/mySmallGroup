@@ -33,3 +33,8 @@ span#logout {
     right: 10px;
     top: 10px;
 }
+
+span#title_loading{
+    position: absolute;
+    top: -25px;
+}

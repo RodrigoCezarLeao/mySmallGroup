@@ -15,3 +15,16 @@ body {
     --wine: #470517;
 }
 
+span.rotate-always {
+    animation: spin 3s infinite linear;
+    position: absolute;
+}
+
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
