@@ -1,8 +1,10 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { SMALL_GROUP_LOADED } from 'src/app/events';
 import { checkIfLoggedIn, clearTokens, getsavedTokensInSessionStorage } from 'src/app/helpers/base_request';
 import { emptyGroup, group } from 'src/app/interface/group';
 import { GroupService } from 'src/app/service/group.service';
+import { HubService } from 'src/app/service/hub.service';
 import { TranslateService } from 'src/app/service/translate.service';
 
 @Component({
@@ -12,13 +14,14 @@ import { TranslateService } from 'src/app/service/translate.service';
 })
 export class HomeComponent {
   @ViewChild("editTitleInput") editTitleInput: any;
-
+  
   group: group = emptyGroup;
   newGroupTitle = "";
-  editTitle = false;
   isUpdatingTitle = false;
 
-  constructor(private router: Router, private groupService: GroupService, public intl: TranslateService, private changeDetectorRef: ChangeDetectorRef){
+  constructor(private router: Router, 
+    private groupService: GroupService, public intl: TranslateService, private hub: HubService
+    ){
     if (!checkIfLoggedIn())
       this.router.navigate(["/"]);
     else
@@ -28,6 +31,8 @@ export class HomeComponent {
   async getGroup(){
     const resp = await this.groupService.getGroupInfo();
     this.group = resp;
+    this.newGroupTitle = resp.name;
+    this.hub.notifyArgs(SMALL_GROUP_LOADED, resp);
   }
 
   logout(){
@@ -36,18 +41,11 @@ export class HomeComponent {
   }
 
   // Small Group Title
-  editSmallGroupTitle(){
-    this.newGroupTitle = this.group.name; 
-    this.editTitle = true; 
-    setTimeout(() => this.editTitleInput.nativeElement.focus(), 100);
-  }
+  
   handleSmallGroupTitleTyping(event: KeyboardEvent){
     if (event.key === "Enter")
       this.updateSmallGroupTitle();
-  }
-  cancelSmallGroupTitleEdition(){
-    this.editTitle = false;
-  }
+  }  
   async updateSmallGroupTitle(){
     if (!this.newGroupTitle)
       return;    
@@ -64,9 +62,9 @@ export class HomeComponent {
 
       if (res.id === token.groupID){
         this.group.name = this.newGroupTitle;
-        this.cancelSmallGroupTitleEdition();
       }
 
+      this.editTitleInput.nativeElement.blur();
       this.isUpdatingTitle = false;
     }
   }

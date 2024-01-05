@@ -4,18 +4,18 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TranslateService {
-  language: string = "pt-br";
+  language: string;
   
-  // constructor(private hubService: HubService) {
-  //   this.language = this.getCachedLanguage() ?? 'pt-br';
-  //  }
+  constructor() {
+    this.language = this.getCachedLanguage() ?? 'pt-br';
+   }
 
   getCachedLanguage(){
-    return localStorage.getItem('cashier-language');
+    return localStorage.getItem('mysmallgroup-language');
   }
 
   setCacheLanguage(lang: string){
-    localStorage.setItem('cashier-language', lang);
+    localStorage.setItem('mysmallgroup-language', lang);
   }
 
  translate(key: string){  
@@ -55,6 +55,34 @@ export class TranslateService {
     "alert_confirm_small_group_title_edition": {
       "pt-br": "Deseja trocar o nome do grupo de '@var' para '@var'?",
       "en-us": "Confirm small group name from '@var' to '@var'?",
+    },
+    "button_add": {
+      "pt-br": "Adicionar",
+      "en-us": "Add",
+    },
+    "button_save": {
+      "pt-br": "Salvar",
+      "en-us": "Save",
+    },
+    "participant_manager_table_name_column": {
+      "pt-br": "Nome",
+      "en-us": "Name",
+    },
+    "participant_manager_table_alias_column": {
+      "pt-br": "Apelido",
+      "en-us": "Alias",
+    },
+    "participant_manager_table_action_column": {
+      "pt-br": "Ação",
+      "en-us": "Action",
+    },
+    "participant_manager_table_confirm_participant_delete": {
+      "pt-br": "Deseja deletar o parcipante de nome: '@var'?",
+      "en-us": "Confirm participant's '@var' deletion?",
+    },
+    "participant_manager_table_success_participant_update": {
+      "pt-br": "Lista de participantes atualizada com sucesso!",
+      "en-us": "Participants updated successfully!",
     },
     // No use
     "alert_error_empty_title_edition": {

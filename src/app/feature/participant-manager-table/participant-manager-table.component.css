@@ -1,0 +1,40 @@
+
+tr, td, th {
+    border: 1px solid black;
+    text-align: center;
+    font-weight: 700;
+    padding: 0px 5px;
+}
+
+th { cursor: default }
+
+td input {
+    text-align: center;
+    background: rgba(246, 114, 128, .2);
+    font-weight: 700;
+    border: 0px;
+    cursor: pointer;
+}
+
+td input:focus {
+    outline: 2px solid var(--wine);
+}
+
+
+div#buttons_table_participant_manager {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0px;
+}
+
+button {    
+    background: var(--bege);
+    border: 2px solid var(--pink);
+    color: var(--wine);
+    cursor: pointer;
+    padding: 0px 5px;
+}
+
+button:hover {
+    border: 2px solid var(--wine);
+}

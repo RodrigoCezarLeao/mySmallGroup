@@ -28,3 +28,5 @@ span.rotate-always {
       transform: rotate(360deg);
     }
   }
+
+  .pointer { cursor: pointer;}
