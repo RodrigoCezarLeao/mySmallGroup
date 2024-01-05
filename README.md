@@ -11,5 +11,5 @@ www.mysmallgroup.com.br
 
 /docs/404.html
 <script>
-    window.location.href = "/mySmallGroup/";
+    window.location.href = "https://www.mysmallgroup.com.br/";
 </script>
