@@ -1,36 +1,25 @@
 <main>
     <span class="material-symbols-outlined" (click)="logout()" id="logout">logout</span>
 
+    <!-- Title Management -->
     <div>
-        <span class="material-symbols-outlined rotate-always" id="title_loading" *ngIf="isUpdatingTitle">progress_activity</span>
-        <h1 [class]="!editTitle ? 'visible' : 'not_visible'">{{group.name}}</h1>
+        <span class="material-symbols-outlined rotate-always" id="title_loading" *ngIf="isUpdatingTitle">progress_activity</span>        
         
         <input 
             id="edit_title_input" 
-            type="text" 
-            [class]="editTitle ? 'visible' : 'not_visible'" 
+            type="text"
             [value]="newGroupTitle" 
             [(ngModel)]="newGroupTitle"
+            [size]="newGroupTitle ? newGroupTitle.length : 20"
             (keypress)="handleSmallGroupTitleTyping($event)"
             #editTitleInput
         />
-
-        <div>
-            <span 
-                class="material-symbols-outlined" 
-                (click)="!editTitle ? editSmallGroupTitle() : cancelSmallGroupTitleEdition()"
-            >
-                {{editTitle ? 'close' : 'edit'}}
-            </span>
-            <span
-                *ngIf="editTitle"
-                class="material-symbols-outlined" 
-                (click)="updateSmallGroupTitle()"
-            >
-                check
-            </span>
-        </div>
+        <span class="material-symbols-outlined edit_title" (click)="updateSmallGroupTitle()">edit</span>
+        
     </div>
     
-    
+    <!-- Participant Manager -->
+    <section id="participant_manager_table">
+        <app-participant-manager-table></app-participant-manager-table>
+    </section>
 </main>

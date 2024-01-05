@@ -1,0 +1,22 @@
+
+<div id="buttons_table_participant_manager">
+    <button (click)="addNewParticipant()">{{intl.translate("button_add")}}</button>
+    <button (click)="saveParticipants()">{{intl.translate("button_save")}}</button>
+</div>
+
+<table>
+    <tr>
+        <!-- <th>Id</th> -->
+        <th>{{intl.translate("participant_manager_table_name_column")}}</th>
+        <th>{{intl.translate("participant_manager_table_alias_column")}}</th>
+        <th>{{intl.translate("participant_manager_table_action_column")}}</th>
+    </tr>
+
+    <tr *ngFor="let participant of participants">
+        <!-- <td>{{participant.id.slice(0, 6)}}</td> -->
+        <td><input type="text" [(ngModel)]="participant.name" [size]="participant.name ? participant.name.length : 10 "/></td>
+        <td><input type="text" [(ngModel)]="participant.alias" [size]="participant.alias ? participant.alias.length : 10"/></td>
+        <td><span class="material-symbols-outlined pointer" (click)="deleteParticipant(participant)">delete</span></td>
+    </tr>
+
+</table>

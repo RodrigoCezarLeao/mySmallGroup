@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { clearTokens, getInfo, saveTokensInSessionStorage } from 'src/app/helpers/base_request';
+import { checkIfLoggedIn, clearTokens, getInfo, saveTokensInSessionStorage } from 'src/app/helpers/base_request';
 import { TranslateService } from 'src/app/service/translate.service';
 
 @Component({
@@ -17,7 +17,10 @@ export class LoginComponent {
   constructor(
     public intl: TranslateService,
     private router: Router
-  ){}
+  ){
+    if(checkIfLoggedIn())
+      this.router.navigate(["/home"]);
+  }
 
   toggleInput(event: Event){
     event.preventDefault();

@@ -1,4 +1,8 @@
-main {}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 main > div {
     display: flex;
@@ -8,9 +12,12 @@ main > div {
     margin-top: 40px;
 }
 
-main div h1 {cursor: default;}
-
 main span {cursor: pointer;}
+
+main span.edit_title {
+    position: absolute;
+    right: -30px;
+}
 
 
 .not_visible {
@@ -22,9 +29,16 @@ main span {cursor: pointer;}
 }
 
 main input#edit_title_input {
-    font-size: 1.4em;
-    position: absolute;
+    font-size: 1.4em;        
     text-align: center;
+    background: rgba(246, 114, 128, .2);
+    font-weight: 700;
+    border: 0px;
+    cursor: pointer;
+}
+
+main input#edit_title_input:focus {
+    outline: 2px solid var(--wine);
 }
 
 span#logout {
@@ -36,5 +50,11 @@ span#logout {
 
 span#title_loading{
     position: absolute;
-    top: -25px;
+    top: -30px;
+}
+
+section#participant_manager_table {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
