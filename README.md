@@ -8,3 +8,8 @@ ng build --configuration production --aot --output-hashing=all --output-path doc
 
 manter o CNAMES no /docs
 www.mysmallgroup.com.br
+
+/docs/404.html
+<script>
+    window.location.href = "/mySmallGroup/";
+</script>
