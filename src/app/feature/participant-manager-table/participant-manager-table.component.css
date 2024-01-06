@@ -29,12 +29,12 @@ div#buttons_table_participant_manager {
 
 button {    
     background: var(--bege);
-    border: 2px solid var(--pink);
+    border: 1px solid var(--wine);
     color: var(--wine);
     cursor: pointer;
     padding: 0px 5px;
 }
 
 button:hover {
-    border: 2px solid var(--wine);
+    border: 1px solid var(--pink);
 }
