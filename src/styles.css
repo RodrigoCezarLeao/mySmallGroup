@@ -4,6 +4,7 @@
 body {
     background: linear-gradient(180deg, var(--bege), var(--dark-pink));
     background-attachment: fixed;
+    height: 95vh;
  }
 
 :root {
