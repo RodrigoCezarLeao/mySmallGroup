@@ -13,3 +13,22 @@ www.mysmallgroup.com.br
 <script>
     window.location.href = "https://www.mysmallgroup.com.br/";
 </script>
+
+
+document.getElementsByTagName("body")[0].requestFullscreen()
+
+Menu
+- Home ???
+
+- Participantes (gestão)
+- Calendário de Eventos
+    - Página de evento (botão voltar)
+        - Evento Principal?, Presença do dia, Sorteio, Descrição, Fotos, etc.
+- Relatórios (filtros e talvez para calendário de eventos tb)
+    - Frequência Geral, Frequência Simples, Evento Principal
+- Configurações
+    - Alterar nome da célula    
+    - Sair
+    - Língua
+    - Tema?
+    - Alterar Senha?
