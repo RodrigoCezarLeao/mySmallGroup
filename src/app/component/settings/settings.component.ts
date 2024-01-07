@@ -8,11 +8,11 @@ import { HubService } from 'src/app/service/hub.service';
 import { TranslateService } from 'src/app/service/translate.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.css']
 })
-export class HomeComponent {
+export class SettingsComponent {
   @ViewChild("editTitleInput") editTitleInput: any;
   
   group: group = emptyGroup;
@@ -22,17 +22,14 @@ export class HomeComponent {
   constructor(private router: Router, 
     private groupService: GroupService, public intl: TranslateService, private hub: HubService
     ){
+    this.groupService.init();
+    this.hub.subscribe(SMALL_GROUP_LOADED, (args: group[]) => {
+      console.log("🚀 ~ file: settings.component.ts:26 ~ SettingsComponent ~ this.hub.subscribe ~ args:", args)
+      this.group = args[0];
+      this.newGroupTitle = args[0]?.name;
+    });
     if (!checkIfLoggedIn())
       this.router.navigate(["/"]);
-    else
-      this.getGroup();
-  }
-
-  async getGroup(){
-    const resp = await this.groupService.getGroupInfo();
-    this.group = resp;
-    this.newGroupTitle = resp.name;
-    this.hub.notifyArgs(SMALL_GROUP_LOADED, resp);
   }
 
   logout(){

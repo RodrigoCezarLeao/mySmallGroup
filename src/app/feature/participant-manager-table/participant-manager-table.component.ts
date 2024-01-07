@@ -18,8 +18,10 @@ export class ParticipantManagerTableComponent {
   constructor(private hub: HubService, private groupService: GroupService, public intl:TranslateService){    
     hub.subscribe(SMALL_GROUP_LOADED, (args: any) => {      
       this.group = args;
-      this.participants = args.participants;      
+      this.participants = args.participants ?? [];
     });
+    this.group = this.groupService.group;
+    this.participants = this.groupService.group.participants ?? [];
   }
 
   addNewParticipant(){

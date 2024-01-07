@@ -2,13 +2,26 @@ import { Injectable } from '@angular/core';
 import { baseGraphCMSFetch, getsavedTokensInSessionStorage } from '../helpers/base_request';
 import { participant } from '../interface/participant';
 import { cleanIt } from '../helpers/general';
+import { emptyGroup, group } from '../interface/group';
+import { HubService } from './hub.service';
+import { SMALL_GROUP_LOADED } from '../events';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GroupService {
+  group: group = emptyGroup;
+  
+  constructor(private hub: HubService) { 
+    this.init();
+  }
 
-  constructor() { }
+  async init(){
+    const res = await this.getGroupInfo();
+    this.group = res;
+    console.log("🚀 ~ file: group.service.ts:22 ~ GroupService ~ init ~ res:", res)
+    this.hub.notifyArgs(SMALL_GROUP_LOADED, [res]);
+  }
 
   async publishGroup(){
     const token = getsavedTokensInSessionStorage();
@@ -23,7 +36,9 @@ export class GroupService {
         `
     };
 
-    return (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery));
+    const res = (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery));
+    this.group = res;
+    return res;
   }
 
   async getGroupInfo(){
@@ -40,7 +55,8 @@ export class GroupService {
           }
     `};
     
-    return (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery))?.data?.group;
+    const res = (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery))?.data?.group;
+    return res;
   }
 
   async updateGroupName(name: string){

@@ -19,7 +19,7 @@ export class LoginComponent {
     private router: Router
   ){
     if(checkIfLoggedIn())
-      this.router.navigate(["/home"]);
+      this.router.navigate(["/settings"]);
   }
 
   toggleInput(event: Event){
@@ -39,7 +39,7 @@ export class LoginComponent {
     else{
       this.invalidPasswordMessage = this.intl.translate("success_password");
       saveTokensInSessionStorage(res);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/settings']);
     }
 
     this.isLoading = false;
