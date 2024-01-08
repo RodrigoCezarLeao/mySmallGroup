@@ -17,7 +17,7 @@ export class SettingsComponent {
   
   group: group = emptyGroup;
   newGroupTitle = "";
-  isUpdatingTitle = true;
+  isUpdatingTitle = false;
 
   constructor(private router: Router, 
     private groupService: GroupService, public intl: TranslateService, private hub: HubService
