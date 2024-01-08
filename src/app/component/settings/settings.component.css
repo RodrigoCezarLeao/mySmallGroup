@@ -9,7 +9,7 @@ main > div {
     flex-direction: column;
     align-items: center;
     position: relative;
-    margin-top: 40px;
+    margin: 20px 0px;
 }
 
 main span {cursor: pointer;}
@@ -43,18 +43,38 @@ main input#edit_title_input:focus {
 
 span#logout {
     cursor: pointer;
-    position: absolute;
-    right: 10px;
-    top: 10px;
 }
 
 span#title_loading{
     position: absolute;
-    top: -30px;
+    top: 22px;
+    right: -55px;
 }
 
 section#participant_manager_table {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+}
+
+
+div#flags {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+img.language {
+    width: 50px;
+    height: 34px;
+    cursor: pointer;
+}
+
+img.language:hover {
+    box-shadow: 0px 0px 8px lightgray;
+}
+
+hr {
+    border: 1px solid var(--wine);
+    width: 99%;
 }

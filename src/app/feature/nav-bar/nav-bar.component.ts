@@ -7,9 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
+  activePage = "/settings";
+
   constructor(private router: Router){}
 
   redirectTo(route: string){
     this.router.navigate([route]);
+    this.activePage = route;
   }
 }
