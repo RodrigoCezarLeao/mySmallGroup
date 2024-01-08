@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from './service/translate.service';
+import { checkIfLoggedIn } from './helpers/base_request';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,9 @@ export class AppComponent {
 
   constructor(private intl: TranslateService){}
 
-  changeLanguage(lang: string){
-    this.intl.changeLanguage(lang);
+  
+
+  checkIfLoggedIn(){
+    return checkIfLoggedIn();
   }
 }

@@ -19,7 +19,6 @@ export class GroupService {
   async init(){
     const res = await this.getGroupInfo();
     this.group = res;
-    console.log("🚀 ~ file: group.service.ts:22 ~ GroupService ~ init ~ res:", res)
     this.hub.notifyArgs(SMALL_GROUP_LOADED, [res]);
   }
 

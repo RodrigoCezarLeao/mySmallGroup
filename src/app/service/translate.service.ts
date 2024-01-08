@@ -84,6 +84,10 @@ export class TranslateService {
       "pt-br": "Lista de participantes atualizada com sucesso!",
       "en-us": "Participants updated successfully!",
     },
+    "settings_group_title": {
+      "pt-br": "Nome do grupo:",
+      "en-us": "Group's name:",
+    },
     // No use
     "alert_error_empty_title_edition": {
       "pt-br": "O campo do título está vazio.",

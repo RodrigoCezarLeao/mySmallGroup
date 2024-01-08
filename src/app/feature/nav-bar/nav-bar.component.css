@@ -15,5 +15,12 @@ section span {
     cursor: pointer;
 }
 section span:hover {
-    color: var(--pink);   
+    color: var(--pink);
+}
+
+.inactive {
+    color: var(--wine) !important;
+}
+.active {
+    color: var(--pink) !important;
 }

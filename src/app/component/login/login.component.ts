@@ -28,6 +28,7 @@ export class LoginComponent {
   }
 
   async loginAttempt(){
+    document.getElementsByTagName("body")[0].requestFullscreen({navigationUI: "hide"});
     this.isLoading = true;
 
     let res = await getInfo(this.passcode);

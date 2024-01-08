@@ -24,7 +24,6 @@ export class SettingsComponent {
     ){
     this.groupService.init();
     this.hub.subscribe(SMALL_GROUP_LOADED, (args: group[]) => {
-      console.log("🚀 ~ file: settings.component.ts:26 ~ SettingsComponent ~ this.hub.subscribe ~ args:", args)
       this.group = args[0];
       this.newGroupTitle = args[0]?.name;
     });
@@ -35,6 +34,10 @@ export class SettingsComponent {
   logout(){
     clearTokens();
     this.router.navigate(["/"]);
+  }
+
+  changeLanguage(lang: string){
+    this.intl.changeLanguage(lang);
   }
 
   // Small Group Title
