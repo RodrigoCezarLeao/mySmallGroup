@@ -21,3 +21,12 @@ export function cleanIt(obj: any) {
         return match.replace(/"/g, "");
     });
 }
+
+export const openFullScreen = () => {
+    // document.getElementsByTagName("body")[0].requestFullscreen({navigationUI: "hide"});
+    document.documentElement.requestFullscreen();
+}
+
+export const closeFullScreen = () => {
+    document.exitFullscreen();
+}

@@ -17,18 +17,24 @@ export class SettingsComponent {
   
   group: group = emptyGroup;
   newGroupTitle = "";
-  isUpdatingTitle = false;
+  isUpdatingTitle = true;
 
   constructor(private router: Router, 
     private groupService: GroupService, public intl: TranslateService, private hub: HubService
     ){
-    this.groupService.init();
     this.hub.subscribe(SMALL_GROUP_LOADED, (args: group[]) => {
       this.group = args[0];
       this.newGroupTitle = args[0]?.name;
     });
     if (!checkIfLoggedIn())
       this.router.navigate(["/"]);
+
+    if (!this.groupService.group.id || !this.groupService.group.name){
+      this.groupService.init()
+    }else {
+      this.group = this.groupService.group;
+      this.newGroupTitle = this.group.name;
+    }
   }
 
   logout(){
@@ -54,18 +60,18 @@ export class SettingsComponent {
       return;
 
     
-    if(confirm(this.intl.translateWithParams("alert_confirm_small_group_title_edition", [this.group.name, this.newGroupTitle]))){
-      this.isUpdatingTitle = true;
+    // if(confirm(this.intl.translateWithParams("alert_confirm_small_group_title_edition", [this.group.name, this.newGroupTitle]))){
+    this.isUpdatingTitle = true;
 
-      const res = await this.groupService.updateGroupName(this.newGroupTitle);
-      const token = getsavedTokensInSessionStorage();
+    const res = await this.groupService.updateGroupName(this.newGroupTitle);
+    const token = getsavedTokensInSessionStorage();
 
-      if (res.id === token.groupID){
-        this.group.name = this.newGroupTitle;
-      }
-
-      this.editTitleInput.nativeElement.blur();
-      this.isUpdatingTitle = false;
+    if (res.id === token.groupID){
+      this.group.name = this.newGroupTitle;
     }
+
+    this.editTitleInput.nativeElement.blur();
+    this.isUpdatingTitle = false;
+    
   }
 }

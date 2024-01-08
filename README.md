@@ -15,7 +15,8 @@ www.mysmallgroup.com.br
 </script>
 
 
-document.getElementsByTagName("body")[0].requestFullscreen()
+// indicações visuais de alteração nos participantes
+// toggle full scren top page geral
 
 Menu
 - Home ???
