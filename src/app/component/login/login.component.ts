@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { checkIfLoggedIn, clearTokens, getInfo, saveTokensInSessionStorage } from 'src/app/helpers/base_request';
+import { openFullScreen } from 'src/app/helpers/general';
 import { TranslateService } from 'src/app/service/translate.service';
 
 @Component({
@@ -28,7 +29,7 @@ export class LoginComponent {
   }
 
   async loginAttempt(){
-    document.getElementsByTagName("body")[0].requestFullscreen({navigationUI: "hide"});
+    openFullScreen();
     this.isLoading = true;
 
     let res = await getInfo(this.passcode);

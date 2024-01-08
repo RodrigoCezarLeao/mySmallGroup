@@ -1,7 +1,8 @@
 
 <div id="buttons_table_participant_manager">
-    <button (click)="addNewParticipant()">{{intl.translate("button_add")}}</button>
-    <button (click)="saveParticipants()">{{intl.translate("button_save")}}</button>
+    <span class="material-symbols-outlined" (click)="addNewParticipant()">add_circle</span>
+    <span [class]="isSaving ? 'material-symbols-outlined rotate-always' : 'not_visible'">{{isSaving ? 'progress_activity': ''}}</span>
+    <span class="material-symbols-outlined" (click)="saveParticipants()" [class]="saveButtonClass">save</span>    
 </div>
 
 <table>

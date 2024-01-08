@@ -54,7 +54,7 @@ export class GroupService {
           }
     `};
     
-    const res = (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery))?.data?.group;
+    const res: group = (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery))?.data?.group;
     return res;
   }
 

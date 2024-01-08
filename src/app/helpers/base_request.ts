@@ -1,4 +1,5 @@
 import { apiUrl } from "env";
+import { openFullScreen } from "./general";
 
 export const baseGraphCMSFetch = async (apiUrl: string, bearerToken: string, mutation: {query: string}) => {
     try {
@@ -14,6 +15,7 @@ export const baseGraphCMSFetch = async (apiUrl: string, bearerToken: string, mut
         return data;
     }catch(error){
         alert(error);
+        openFullScreen();
     }
 }
 
@@ -30,6 +32,7 @@ export const getInfo = async (payload: string) => {
         return data;
     }catch(error){
         alert(error);
+        openFullScreen();
         return error;
     }
 }

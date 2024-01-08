@@ -70,7 +70,7 @@ export class TranslateService {
     },
     "participant_manager_table_alias_column": {
       "pt-br": "Apelido",
-      "en-us": "Alias",
+      "en-us": "Nickname",
     },
     "participant_manager_table_action_column": {
       "pt-br": "Ação",
