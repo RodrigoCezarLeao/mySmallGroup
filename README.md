@@ -15,9 +15,6 @@ www.mysmallgroup.com.br
 </script>
 
 
-// indicações visuais de alteração nos participantes
-// toggle full scren top page geral
-
 Menu
 - Home ???
 

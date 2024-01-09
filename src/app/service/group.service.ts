@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { baseGraphCMSFetch, getsavedTokensInSessionStorage } from '../helpers/base_request';
+import { baseGraphCMSFetch, checkIfLoggedIn, getsavedTokensInSessionStorage } from '../helpers/base_request';
 import { participant } from '../interface/participant';
 import { cleanIt } from '../helpers/general';
 import { emptyGroup, group } from '../interface/group';
@@ -12,14 +12,20 @@ import { SMALL_GROUP_LOADED } from '../events';
 export class GroupService {
   group: group = emptyGroup;
   
-  constructor(private hub: HubService) { 
-    this.init();
-  }
+  constructor(private hub: HubService) {}
 
-  async init(){
-    const res = await this.getGroupInfo();
-    this.group = res;
-    this.hub.notifyArgs(SMALL_GROUP_LOADED, [res]);
+  async init(tokens?: any){
+    try {
+      if (!this.group.id || !this.group.name){
+        const res = await this.getGroupInfo(tokens);
+        this.group = res;
+      }
+      return true;
+    }catch(error){
+      console.log(error);
+      return false;
+    }
+    
   }
 
   async publishGroup(){
@@ -40,8 +46,8 @@ export class GroupService {
     return res;
   }
 
-  async getGroupInfo(){
-    const token = getsavedTokensInSessionStorage();
+  async getGroupInfo(tokens?: any){
+    const token = checkIfLoggedIn() ? getsavedTokensInSessionStorage() : tokens;
 
     const cmsQuery = { 
       query : `

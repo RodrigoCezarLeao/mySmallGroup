@@ -22,16 +22,14 @@ export class SettingsComponent {
   constructor(private router: Router, 
     private groupService: GroupService, public intl: TranslateService, private hub: HubService
     ){
-    this.hub.subscribe(SMALL_GROUP_LOADED, (args: group[]) => {
-      this.group = args[0];
-      this.newGroupTitle = args[0]?.name;
-    });
     if (!checkIfLoggedIn())
       this.router.navigate(["/"]);
+    
+    this.getGroup();
+  }
 
-    if (!this.groupService.group.id || !this.groupService.group.name){
-      this.groupService.init()
-    }else {
+  async getGroup(){
+    if (await this.groupService.init()){
       this.group = this.groupService.group;
       this.newGroupTitle = this.group.name;
     }
@@ -59,8 +57,6 @@ export class SettingsComponent {
     if (this.newGroupTitle === this.group.name)
       return;
 
-    
-    // if(confirm(this.intl.translateWithParams("alert_confirm_small_group_title_edition", [this.group.name, this.newGroupTitle]))){
     this.isUpdatingTitle = true;
 
     const res = await this.groupService.updateGroupName(this.newGroupTitle);
@@ -71,7 +67,6 @@ export class SettingsComponent {
     }
 
     this.editTitleInput.nativeElement.blur();
-    this.isUpdatingTitle = false;
-    
+    this.isUpdatingTitle = false;    
   }
 }
