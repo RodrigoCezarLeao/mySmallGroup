@@ -31,7 +31,6 @@ export const getInfo = async (payload: string) => {
         return data;
     }catch(error){
         alert(error);
-        openFullScreen();
         return error;
     }
 }
