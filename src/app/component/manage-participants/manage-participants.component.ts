@@ -13,7 +13,7 @@ import { TranslateService } from 'src/app/service/translate.service';
 })
 export class ManageParticipantsComponent {
   group: group = emptyGroup;
-  participants: participant[] = [];
+  participants: participant[] = [];  
   isSaving = false;
   saveButtonClass = "button_disabled";
   
@@ -24,32 +24,31 @@ export class ManageParticipantsComponent {
   async getGroup(){
     if (await this.groupService.init()){
       this.group = this.groupService.group;
-      this.participants = this.group.participants;
+      this.participants = structuredClone(this.group.participants);
     }
   }
 
-  checkIfParticipantsNeedToBeUpdated(){    
-    if (this.participants.length !== this.group.participants){
+  checkIfParticipantsNeedToBeUpdated(){
+    if (this.participants.length !== this.group.participants.length){
       this.saveButtonClass = "";
-      return true;
+      return;
     }
     else {
       for(let part of this.participants){
-        let relatedPart = this.group.participants.filter((x: participant) => x.id === part.id);
+        let relatedPart = this.group.participants.filter((x: participant) => x.id === part.id)?.[0];
         if(!relatedPart){
           this.saveButtonClass = "";
-          return true;
-        }
-
-        if (part.name !== relatedPart.name || part.alias !== relatedPart.alias){
-          this.saveButtonClass = "";
-          return true;
+          return;
+        }else{
+          if (part.name !== relatedPart.name || part.alias !== relatedPart.alias){
+            this.saveButtonClass = "";
+            return;
+          }            
         }
       }
     }
 
     this.saveButtonClass = "button_disabled";
-    return false;
   }
 
   addNewParticipant(){
@@ -63,6 +62,8 @@ export class ManageParticipantsComponent {
   }
 
   async saveParticipants(){
+    this.checkIfParticipantsNeedToBeUpdated();
+
     if (!this.saveButtonClass){
       this.isSaving = true;
       const res = await this.groupService.updateGroupParticipants(this.participants);
