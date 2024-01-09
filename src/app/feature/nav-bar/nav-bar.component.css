@@ -24,11 +24,3 @@ section span:hover {
 .active {
     color: var(--pink) !important;
 }
-
-span#fullscreen {
-    position: absolute;
-    top: 10px;
-    background: rgba(0,0,0,0);
-    right: 10px;
-    cursor: pointer;
-}

@@ -14,8 +14,7 @@ export const baseGraphCMSFetch = async (apiUrl: string, bearerToken: string, mut
     
         return data;
     }catch(error){
-        alert(error);
-        openFullScreen();
+        console.log(error);
     }
 }
 
@@ -43,8 +42,8 @@ const AUTH_TOKEN = "mysmallgroup_authtoken";
 const GROUP_ID = "mysmallgroup_groupid";
 
 export const saveTokensInSessionStorage = (token: Record<string, string>) => {
-    if (token['apiURL'] && token['authToken'] && token['groupID']){
-        sessionStorage.setItem(API_URL_TOKEN, token['apiURL']);
+    if (token['apiUrl'] && token['authToken'] && token['groupID']){
+        sessionStorage.setItem(API_URL_TOKEN, token['apiUrl']);
         sessionStorage.setItem(AUTH_TOKEN, token['authToken']);
         sessionStorage.setItem(GROUP_ID, token['groupID']);
     }

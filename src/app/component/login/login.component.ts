@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { checkIfLoggedIn, clearTokens, getInfo, saveTokensInSessionStorage } from 'src/app/helpers/base_request';
 import { openFullScreen } from 'src/app/helpers/general';
+import { GroupService } from 'src/app/service/group.service';
 import { TranslateService } from 'src/app/service/translate.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class LoginComponent {
 
   constructor(
     public intl: TranslateService,
+    private groupService: GroupService,
     private router: Router
   ){
     if(checkIfLoggedIn())
@@ -29,9 +31,8 @@ export class LoginComponent {
   }
 
   async loginAttempt(){
-    openFullScreen();
     this.isLoading = true;
-
+    
     let res = await getInfo(this.passcode);
 
     if (res?.error === "wrong password"){
@@ -40,8 +41,12 @@ export class LoginComponent {
     }
     else{
       this.invalidPasswordMessage = this.intl.translate("success_password");
-      saveTokensInSessionStorage(res);
-      this.router.navigate(['/settings']);
+      if (await this.groupService.init(res)){
+        saveTokensInSessionStorage(res);
+        this.router.navigate(['/settings']);
+      }else {
+        clearTokens();
+      }
     }
 
     this.isLoading = false;
