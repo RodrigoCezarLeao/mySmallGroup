@@ -64,29 +64,45 @@ export class TranslateService {
       "pt-br": "Salvar",
       "en-us": "Save",
     },
-    "participant_manager_table_name_column": {
+    "manage_participant_table_name_column": {
       "pt-br": "Nome",
       "en-us": "Name",
     },
-    "participant_manager_table_alias_column": {
+    "manage_participant_table_alias_column": {
       "pt-br": "Apelido",
       "en-us": "Nickname",
     },
-    "participant_manager_table_action_column": {
+    "manage_participant_table_action_column": {
       "pt-br": "Ação",
       "en-us": "Action",
     },
-    "participant_manager_table_confirm_participant_delete": {
+    "manage_participant_table_confirm_participant_delete": {
       "pt-br": "Deseja deletar o parcipante de nome: '@var'?",
       "en-us": "Confirm participant's '@var' deletion?",
     },
-    "participant_manager_table_success_participant_update": {
+    "manage_participant_table_success_participant_update": {
       "pt-br": "Lista de participantes atualizada com sucesso!",
       "en-us": "Participants updated successfully!",
     },
     "settings_group_title": {
       "pt-br": "Nome do grupo:",
       "en-us": "Group's name:",
+    },
+    "manage_participant_table_role_column": {
+      "pt-br": "Papel",
+      "en-us": "Role",
+    },
+    "manage_participant_table_leader_role": {
+      "pt-br": "Líder",
+      "en-us": "Leader",
+    },
+    "manage_participant_table_member_role": {
+      "pt-br": "Membro",
+      "en-us": "Member",
+    },
+    "manage_participant_table_guest_role": {
+      "pt-br": "Visitante",
+      "en-us": "Guest",
     },
     // No use
     "alert_error_empty_title_edition": {

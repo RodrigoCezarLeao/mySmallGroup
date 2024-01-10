@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SMALL_GROUP_LOADED } from 'src/app/events';
 import { emptyGroup, group } from 'src/app/interface/group';
-import { createEmptyParticipant, participant } from 'src/app/interface/participant';
+import { PARTICIPANTS_TYPES, createEmptyParticipant, participant } from 'src/app/interface/participant';
 import { GroupService } from 'src/app/service/group.service';
 import { HubService } from 'src/app/service/hub.service';
 import { TranslateService } from 'src/app/service/translate.service';
@@ -13,7 +13,7 @@ import { TranslateService } from 'src/app/service/translate.service';
 })
 export class ManageParticipantsComponent {
   group: group = emptyGroup;
-  participants: participant[] = [];  
+  participants: participant[] = [];
   isSaving = false;
   saveButtonClass = "button_disabled";
   
@@ -40,7 +40,7 @@ export class ManageParticipantsComponent {
           this.saveButtonClass = "";
           return;
         }else{
-          if (part.name !== relatedPart.name || part.alias !== relatedPart.alias){
+          if (part.name !== relatedPart.name || part.alias !== relatedPart.alias || part.role !== relatedPart.role){
             this.saveButtonClass = "";
             return;
           }            
