@@ -21,7 +21,7 @@ td input:focus {
 }
 
 
-div#buttons_table_participant_manager {
+div#buttons_table_manage_participant {
     position: absolute;
     display: flex;
     gap: 10px;
@@ -32,21 +32,21 @@ div#buttons_table_participant_manager {
     width: 100%;
 }
 
-div#buttons_table_participant_manager span:nth-child(1){
+div#buttons_table_manage_participant span:nth-child(1){
     position: absolute;
     left: 10px;
 }
-div#buttons_table_participant_manager span:nth-child(2){
+div#buttons_table_manage_participant span:nth-child(2){
     position: absolute;
     right: 70px;
 }
-div#buttons_table_participant_manager span:nth-child(3){
+div#buttons_table_manage_participant span:nth-child(3){
     position: absolute;
     right: 10px;
 }
 
 
-div#buttons_table_participant_manager span {
+div#buttons_table_manage_participant span {
     cursor: pointer;
     background: var(--blue);
     border-radius: 50%;
@@ -56,7 +56,7 @@ div#buttons_table_participant_manager span {
     font-weight: 700;
 }
 
-div#buttons_table_participant_manager span.button_disabled {
+div#buttons_table_manage_participant span.button_disabled {
     cursor: default;
     background: var(--dark-pink);
 }
@@ -69,4 +69,13 @@ div#participants_table {
     display: flex;
     justify-content: center;
     margin: 20px;
+}
+
+select.role_select {
+    text-align: center;
+    background: rgba(246, 114, 128, .2);
+    cursor: pointer;
+}
+select.role_select:focus {
+    outline: 2px solid var(--wine);
 }

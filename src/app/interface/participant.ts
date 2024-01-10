@@ -4,6 +4,7 @@ export interface participant {
     id: string;
     name: string;
     alias: string;
+    role: string;
 }
 
 export const createEmptyParticipant = () => {
@@ -11,5 +12,12 @@ export const createEmptyParticipant = () => {
         id: uuidv4(),
         name: "",
         alias: "",
+        role: "",
     }
+}
+
+export const PARTICIPANTS_TYPES = {
+    member: "member",
+    guest: "guest",
+    leader: "leader"
 }

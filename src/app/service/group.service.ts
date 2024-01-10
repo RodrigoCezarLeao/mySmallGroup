@@ -18,6 +18,12 @@ export class GroupService {
     try {
       if (!this.group.id || !this.group.name){
         const res = await this.getGroupInfo(tokens);
+
+        const sortedParticipants = res.participants.filter((x: participant) => x.role === "leader").sort((a: participant, b: participant) => a.name > b.name ? 1 : -1)
+        .concat(res.participants.filter((x: participant) => x.role === "member").sort((a: participant, b: participant) => a.name > b.name ? 1 : -1))
+        .concat(res.participants.filter((x: participant) => x.role === "guest").sort((a: participant, b: participant) => a.name > b.name ? 1 : -1));        
+        res.participants = sortedParticipants;
+        
         this.group = res;
       }
       return true;

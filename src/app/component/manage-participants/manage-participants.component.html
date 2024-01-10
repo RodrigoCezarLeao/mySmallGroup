@@ -1,5 +1,5 @@
 
-<div id="buttons_table_participant_manager">
+<div id="buttons_table_manage_participant">
     <span class="material-symbols-outlined" (click)="addNewParticipant()">add_circle</span>
     <span [class]="isSaving ? 'material-symbols-outlined rotate-always' : 'not_visible'">{{isSaving ? 'progress_activity': ''}}</span>
     <span class="material-symbols-outlined" (click)="saveParticipants()" [class]="saveButtonClass">save</span>    
@@ -9,15 +9,23 @@
     <table>
         <tr>
             <!-- <th>Id</th> -->
-            <th>{{intl.translate("participant_manager_table_name_column")}}</th>
-            <th>{{intl.translate("participant_manager_table_alias_column")}}</th>
-            <th>{{intl.translate("participant_manager_table_action_column")}}</th>
+            <th>{{intl.translate("manage_participant_table_name_column")}}</th>
+            <th>{{intl.translate("manage_participant_table_alias_column")}}</th>
+            <th>{{intl.translate("manage_participant_table_role_column")}}</th>
+            <th>{{intl.translate("manage_participant_table_action_column")}}</th>
         </tr>
 
         <tr *ngFor="let participant of participants">
             <!-- <td>{{participant.id.slice(0, 6)}}</td> -->
             <td><input type="text" [(ngModel)]="participant.name" [size]="participant.name ? participant.name.length : 10" (change)="checkIfParticipantsNeedToBeUpdated()"/></td>
             <td><input type="text" [(ngModel)]="participant.alias" [size]="participant.alias ? participant.alias.length : 10" (change)="checkIfParticipantsNeedToBeUpdated()"/></td>
+            <td>
+                <select [(ngModel)]="participant.role" (change)="checkIfParticipantsNeedToBeUpdated()" class="role_select">
+                    <option value="leader">{{intl.translate("manage_participant_table_leader_role")}}</option>
+                    <option value="member">{{intl.translate("manage_participant_table_member_role")}}</option>
+                    <option value="guest">{{intl.translate("manage_participant_table_guest_role")}}</option>
+                </select>
+            </td>
             <td><span class="material-symbols-outlined pointer" (click)="deleteParticipant(participant)">delete</span></td>
         </tr>
 
