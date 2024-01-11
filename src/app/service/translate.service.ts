@@ -103,6 +103,34 @@ export class TranslateService {
     "manage_participant_table_guest_role": {
       "pt-br": "Visitante",
       "en-us": "Guest",
+    },    
+    "events_view_sunday": {
+      "pt-br": "Dom",
+      "en-us": "Sun",
+    },
+    "events_view_monday": {
+      "pt-br": "Seg",
+      "en-us": "Mon",
+    },
+    "events_view_tuesday": {
+      "pt-br": "Ter",
+      "en-us": "Tue",
+    },
+    "events_view_wednesday": {
+      "pt-br": "Qua",
+      "en-us": "Wed",
+    },
+    "events_view_thursday": {
+      "pt-br": "Qui",
+      "en-us": "Thu",
+    },
+    "events_view_friday": {
+      "pt-br": "Sex",
+      "en-us": "Fri",
+    },
+    "events_view_saturday": {
+      "pt-br": "Sáb",
+      "en-us": "Sat",
     },
     // No use
     "alert_error_empty_title_edition": {

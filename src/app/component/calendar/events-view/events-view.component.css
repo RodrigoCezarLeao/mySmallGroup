@@ -1,0 +1,44 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+div#calendar_box {
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap;
+}
+div.day_box:nth-child(7n) {
+    /* background: red; */
+}
+div.day_box {
+    width: 13%;
+    background: white;
+    border: 1px solid black;
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.today {
+    background: yellow !important;
+}
+
+div#calendar_box_header {
+    display: flex;
+    gap: 50px;
+    margin: 10px 0px;
+}
+
+div#calendar_box_header h3 {
+    cursor: default;
+}
+
+div#calendar_box_header button {
+    padding: 0px 10px;
+    cursor: pointer;
+}
