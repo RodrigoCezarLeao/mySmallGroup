@@ -1,0 +1,16 @@
+
+<section>
+    <div id="calendar_box_header">
+        <button (click)="addMonth(-1)">&lt;&lt;</button>
+        <h3>{{formatMonthYear(this.referenceDate)}}</h3>
+        <button (click)="addMonth(1)">&gt;&gt;</button>
+    </div>
+
+    <div id="calendar_box">
+        <div *ngFor="let day of daysLabels" [class]="isItToday(day) ? 'day_box today' : 'day_box'">
+            <p *ngIf="day !== '-'">
+                {{day}}
+            </p>
+        </div>
+    </div>
+</section>
