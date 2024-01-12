@@ -1,0 +1,104 @@
+section#event_form {
+    width: 96%;
+    /* border: 1px solid black;     */
+    margin: 0px auto;
+    margin-top: 50px;
+    font-weight: 700;
+    /* height: 80vh; */
+    /* overflow: scroll; */
+}
+
+div.event_form_line {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 15px 0px;    
+}
+
+div.event_form_line label {
+    width: 15%;
+    text-align: right;
+}
+
+div.event_form_line input, div.event_form_line textarea, div.event_form_line div#participants_frequency {
+    width: 65%;
+    border: 1px solid black;
+    text-align: center;
+    resize: none;
+    font-size: 1.1em;
+    background: rgba(246, 114, 128, .2);
+}
+
+div.event_form_line textarea {
+    height: 150px;
+}
+
+div#participants_frequency {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 5px;
+}
+
+div#participants_frequency div {
+    /* background: var(--wine); */
+    /* width: 60px; */
+    padding: 5px;
+    border-radius: 5px;    
+    border: 1px solid var(--wine);    
+    text-align: center;
+    cursor: pointer;    
+}
+
+.presence {
+    background: var(--blue) !important;
+    color: white;
+}
+
+
+div#buttons_event_manager {
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+    bottom: 100px;
+    justify-content: space-around;
+    align-items: center;
+    left: 0px;
+    width: 100%;
+}
+
+div#buttons_event_manager span:nth-child(1){
+    position: absolute;
+    left: 70px;
+}
+div#buttons_event_manager span:nth-child(2){
+    position: absolute;
+    left: 10px;
+}
+
+
+div#buttons_event_manager span {
+    cursor: pointer;
+    background: var(--blue);
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 2em;
+    color: var(--bege);
+    font-weight: 700;
+}
+
+div#buttons_event_manager span.button_disabled {
+    cursor: default;
+    background: var(--dark-pink);
+}
+
+span#return_button {
+    background: var(--blue);
+    padding: 5px 15px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--bege);
+}

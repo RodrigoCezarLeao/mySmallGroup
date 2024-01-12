@@ -5,6 +5,7 @@ import { cleanIt } from '../helpers/general';
 import { emptyGroup, group } from '../interface/group';
 import { HubService } from './hub.service';
 import { SMALL_GROUP_LOADED } from '../events';
+import { event } from '../interface/event';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +63,7 @@ export class GroupService {
                   id
                   name
                   participants
+                  events
               }
           }
     `};
@@ -95,6 +97,23 @@ export class GroupService {
           mutation {
               updateGroup(data: {
                 participants: ${cleanIt(participants)},                
+              }, where: {id: "${token.groupID}"}) { id }
+          }
+    `};
+    
+    const res = (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery))?.data?.updateGroup;
+    await this.publishGroup();
+    return res;
+  }
+
+  async updateEvent(events: event[]){
+    const token = getsavedTokensInSessionStorage();
+
+    const cmsQuery = { 
+      query : `
+          mutation {
+              updateGroup(data: {
+                events: ${cleanIt(events)},                
               }, where: {id: "${token.groupID}"}) { id }
           }
     `};

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SMALL_GROUP_LOADED } from 'src/app/events';
 import { emptyGroup, group } from 'src/app/interface/group';
-import { PARTICIPANTS_TYPES, createEmptyParticipant, participant } from 'src/app/interface/participant';
+import { createEmptyParticipant, participant } from 'src/app/interface/participant';
 import { GroupService } from 'src/app/service/group.service';
 import { HubService } from 'src/app/service/hub.service';
 import { TranslateService } from 'src/app/service/translate.service';

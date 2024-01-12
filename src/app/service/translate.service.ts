@@ -132,6 +132,30 @@ export class TranslateService {
       "pt-br": "Sáb",
       "en-us": "Sat",
     },
+    "events_manager_title": {
+      "pt-br": "Título",
+      "en-us": "Title",
+    },
+    "events_manager_date": {
+      "pt-br": "Data",
+      "en-us": "Date",
+    },
+    "events_manager_description": {
+      "pt-br": "Descrição",
+      "en-us": "Description",
+    },
+    "events_manager_presence": {
+      "pt-br": "Presença",
+      "en-us": "Presence",
+    },
+    "events_view_edit": {
+      "pt-br": "Editar",
+      "en-us": "Edit",
+    },
+    "events_view_delete": {
+      "pt-br": "Excluir",
+      "en-us": "Delete",
+    },
     // No use
     "alert_error_empty_title_edition": {
       "pt-br": "O campo do título está vazio.",
