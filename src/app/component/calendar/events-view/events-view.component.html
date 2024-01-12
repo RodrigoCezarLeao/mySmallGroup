@@ -6,11 +6,13 @@
         <button (click)="addMonth(1)">&gt;&gt;</button>
     </div>
 
-    <div id="calendar_box">
-        <div *ngFor="let day of daysLabels" [class]="isItToday(day) ? 'day_box today' : 'day_box'">
-            <p *ngIf="day !== '-'">
-                {{day}}
-            </p>
+    <div style="display: flex;">
+        <div id="calendar_box">
+            <div *ngFor="let day of daysLabels; let i=index" [class]="isItExcess(i) ? 'day_box excess' : isItToday(day) ? 'day_box today' : 'day_box'">
+                <p *ngIf="day !== '-'">
+                    {{day}}
+                </p>
+            </div>
         </div>
     </div>
 </section>
