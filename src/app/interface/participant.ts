@@ -15,9 +15,3 @@ export const createEmptyParticipant = () => {
         role: "",
     }
 }
-
-export const PARTICIPANTS_TYPES = {
-    member: "member",
-    guest: "guest",
-    leader: "leader"
-}

@@ -1,1 +1,32 @@
-<p>event-manager works!</p>
+<span class="material-symbols-outlined" id="return_button" (click)="this.router.navigate(['/calendar'])">keyboard_return</span>
+
+<div id="buttons_event_manager">
+    <span [class]="isSaving ? 'material-symbols-outlined rotate-always' : 'not_visible'">{{isSaving ? 'progress_activity': ''}}</span>
+    <span class="material-symbols-outlined" (click)="saveEvent()">save</span>    
+</div>
+
+<section id="event_form">
+    <div class="event_form_line">
+        <label>{{intl.translate("events_manager_title")}}</label>
+        <input type="text" [(ngModel)]="event.title"/>
+    </div>
+
+    <div class="event_form_line">
+        <label>{{intl.translate("events_manager_date")}}</label>
+        <input type="date" [(ngModel)]="event.dateStr"/>
+    </div>
+
+    <div class="event_form_line">
+        <label>{{intl.translate("events_manager_description")}}</label>
+        <textarea [(ngModel)]="event.description"></textarea>
+    </div>
+
+    <div class="event_form_line">
+        <label>{{intl.translate("events_manager_presence")}}</label>
+        <div id="participants_frequency">
+            <div *ngFor="let part of group.participants" (click)="manageFrequency(part)" [class]="isParticipantPresent(part) ? 'presence' : ''">
+                {{part.alias}}
+            </div>
+        </div>
+    </div>
+</section>

@@ -55,3 +55,67 @@ div#calendar_box_header button {
     font-size: 1.2em;
     border: 1px solid var(--wine);
 }
+
+div#buttons_table_manage_participant {
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+    bottom: 100px;
+    justify-content: space-around;
+    align-items: center;
+    left: 0px;
+    width: 100%;
+}
+
+div#buttons_table_manage_participant span:nth-child(1){
+    position: absolute;
+    right: 10px;
+}
+
+div#buttons_table_manage_participant span {
+    cursor: pointer;
+    background: var(--blue);
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 2em;
+    color: var(--bege);
+    font-weight: 700;
+}
+
+hr {margin: 30px; width: 80%;}
+
+div#day_activities{
+    text-align:center;
+}
+
+div#day_activities h3 {
+    margin: 10px 0px;
+}
+
+div#day_activities table {
+    width: 100%;
+}
+
+div#day_activities table, div#day_activities td, div#day_activities th, div#day_activities table tr {
+    border: 1px solid black;
+    background: var(--bege);
+}
+
+div#day_activities td, div#day_activities th {
+    padding: 5px 10px;
+    text-align: center;
+}
+
+div#day_activities th {
+    background: var(--pink);
+    width: 50%;
+}
+
+div#day_activities td {
+    width: 50%;
+}
+
+div#day_activities td span {
+    cursor: pointer;
+}

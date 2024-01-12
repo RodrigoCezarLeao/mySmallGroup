@@ -35,3 +35,16 @@ span.rotate-always {
   }
 
   .pointer { cursor: pointer;}
+
+  .not_visible {
+    visibility: hidden;
+}
+
+hr {
+  border: 1px solid var(--wine);
+  width: 99%;
+}
+
+input:focus, textarea:focus {
+  outline: 2px solid var(--wine);
+}

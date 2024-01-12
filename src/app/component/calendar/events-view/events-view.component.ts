@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { firstDayOfMonth, formatMonthYear, howManyDaysInMonth, isItToday } from 'src/app/helpers/date_time';
+import { Router } from '@angular/router';
+import { EDIT_EVENT } from 'src/app/events';
+import { firstDayOfMonth, formatDayMonthYear, formatMonthYear, formatYearMonthDay, howManyDaysInMonth, isItToday } from 'src/app/helpers/date_time';
+import { event } from 'src/app/interface/event';
+import { emptyGroup, group } from 'src/app/interface/group';
+import { GroupService } from 'src/app/service/group.service';
+import { HubService } from 'src/app/service/hub.service';
 import { TranslateService } from 'src/app/service/translate.service';
 
 @Component({
@@ -8,13 +14,38 @@ import { TranslateService } from 'src/app/service/translate.service';
   styleUrls: ['./events-view.component.css']
 })
 export class EventsViewComponent {
+  group: group = emptyGroup;
+  dayEvents: event[] = [];
   referenceDate = new Date();
   daysLabels: string[] = [];
   formatMonthYear = formatMonthYear;
   
-  constructor(public intl: TranslateService){    
+  constructor(public intl: TranslateService, private router: Router, private groupService: GroupService, private hub: HubService){
+    this.getGroup();
     this.generateCalendarMonthLabels();
+    this.handleCalendarClick(this.referenceDate.getDate().toString());
   }
+
+  formatTitleDate(){
+    return formatDayMonthYear(this.referenceDate);
+  }
+
+  handleCalendarClick(day: string){
+    if(day !== '-'){
+      this.referenceDate = new Date(this.referenceDate.getFullYear(), this.referenceDate.getMonth(), Number(day));
+      const formattedReferenceDate = formatYearMonthDay(this.referenceDate);
+      this.dayEvents = this.group.events.filter(x => x.dateStr === formattedReferenceDate);      
+    }else {
+      this.dayEvents = [];
+    }
+  }
+
+  async getGroup(){
+    if (await this.groupService.init()){
+      this.group = this.groupService.group;
+      this.handleCalendarClick(this.referenceDate.getDate().toString());
+    }
+  }  
 
   generateCalendarMonthLabels(){
     this.daysLabels = [];
@@ -59,6 +90,22 @@ export class EventsViewComponent {
     if (this.daysLabels[i] === "-")
       return true;
     return false;
+  }
+
+  addNewEvent(){
+    this.router.navigate(["/calendar_event"]);
+  }
+
+  editEvent(event: event){
+    setTimeout(() => this.hub.notifyArgs(EDIT_EVENT, event), 100);
+    this.router.navigate(["/calendar_event"]);
+  }
+
+  async deleteEvent(event: event){    
+    const newEventsList = this.group.events.filter(x => x.id !== event.id);
+    await this.groupService.updateEvent(newEventsList);
+    this.group.events = newEventsList;
+    this.handleCalendarClick(this.referenceDate.getDate().toString());
   }
 
 }
