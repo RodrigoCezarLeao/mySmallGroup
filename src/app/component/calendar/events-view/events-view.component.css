@@ -1,21 +1,24 @@
 section {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;    
 }
 
 
 div#calendar_box {
     display: flex;
-    width: 50%;
+    width: 100%;
     flex-wrap: wrap;
+    justify-content: center;
 }
 div.day_box:nth-child(7n) {
     /* background: red; */
 }
 div.day_box {
-    width: 13%;
-    background: white;
+    width: 12.5%;
+    height: 25px;
+    background: var(--blue);
+    color: white;
     border: 1px solid black;
     margin: 2px;
     display: flex;
@@ -23,14 +26,20 @@ div.day_box {
     justify-content: center;
     cursor: pointer;
 }
+div.day_box p{
+    font-weight: 700;
+}
 
 .today {
     background: yellow !important;
+    color: black !important;
 }
+
+.excess { background: rgba(53,92,125,.6) !important; }
 
 div#calendar_box_header {
     display: flex;
-    gap: 50px;
+    gap: 40px;
     margin: 10px 0px;
 }
 
@@ -39,6 +48,10 @@ div#calendar_box_header h3 {
 }
 
 div#calendar_box_header button {
-    padding: 0px 10px;
+    padding: 0px 20px;
     cursor: pointer;
+    font-weight: 700;
+    background: var(--pink);
+    font-size: 1.2em;
+    border: 1px solid var(--wine);
 }

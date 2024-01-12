@@ -6,28 +6,44 @@
 </div>
 
 <div id="participants_table">
-    <table>
-        <tr>
-            <!-- <th>Id</th> -->
-            <th>{{intl.translate("manage_participant_table_name_column")}}</th>
-            <th>{{intl.translate("manage_participant_table_alias_column")}}</th>
-            <th>{{intl.translate("manage_participant_table_role_column")}}</th>
-            <th>{{intl.translate("manage_participant_table_action_column")}}</th>
-        </tr>
+    <div *ngFor="let participant of participants" class="participant_box">
+        <div class="participant_line">
+            <div class="p_thirty">
+                <label>
+                    {{intl.translate("manage_participant_table_name_column")}}
+                </label>
+            </div>
+            <div class="p_seventy">
+                <input type="text" [(ngModel)]="participant.name" [size]="participant.name ? participant.name.length : 10" (change)="checkIfParticipantsNeedToBeUpdated()"/>
+            </div>
+        </div>
 
-        <tr *ngFor="let participant of participants">
-            <!-- <td>{{participant.id.slice(0, 6)}}</td> -->
-            <td><input type="text" [(ngModel)]="participant.name" [size]="participant.name ? participant.name.length : 10" (change)="checkIfParticipantsNeedToBeUpdated()"/></td>
-            <td><input type="text" [(ngModel)]="participant.alias" [size]="participant.alias ? participant.alias.length : 10" (change)="checkIfParticipantsNeedToBeUpdated()"/></td>
-            <td>
+        <div class="participant_line">
+            <div class="p_thirty">
+                <label>
+                    {{intl.translate("manage_participant_table_alias_column")}}
+                </label>
+            </div>
+            <div class="p_seventy">
+                <input type="text" [(ngModel)]="participant.alias" [size]="participant.alias ? participant.alias.length : 10" (change)="checkIfParticipantsNeedToBeUpdated()"/>
+            </div>
+        </div>
+
+        <div class="participant_line">
+            <div class="p_thirty">
+                <label>
+                    {{intl.translate("manage_participant_table_role_column")}}
+                </label>
+            </div>
+            <div class="p_seventy">
                 <select [(ngModel)]="participant.role" (change)="checkIfParticipantsNeedToBeUpdated()" class="role_select">
                     <option value="leader">{{intl.translate("manage_participant_table_leader_role")}}</option>
                     <option value="member">{{intl.translate("manage_participant_table_member_role")}}</option>
                     <option value="guest">{{intl.translate("manage_participant_table_guest_role")}}</option>
                 </select>
-            </td>
-            <td><span class="material-symbols-outlined pointer" (click)="deleteParticipant(participant)">delete</span></td>
-        </tr>
+            </div>
+        </div>
 
-    </table>
+        <span class="material-symbols-outlined pointer" (click)="deleteParticipant(participant)">delete</span>        
+    </div>
 </div>

@@ -5,7 +5,8 @@ section {
     background: var(--bege);
     width: 100%;
     height: 50px;
-    position: absolute;
+    position: fixed;
+    z-index: 11;
     bottom: 0px;
 }
 

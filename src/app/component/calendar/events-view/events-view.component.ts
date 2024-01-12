@@ -55,4 +55,10 @@ export class EventsViewComponent {
             false;
   }
 
+  isItExcess(i: number){
+    if (this.daysLabels[i] === "-")
+      return true;
+    return false;
+  }
+
 }
