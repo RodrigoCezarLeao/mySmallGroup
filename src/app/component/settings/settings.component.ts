@@ -36,6 +36,7 @@ export class SettingsComponent {
   }
 
   logout(){
+    this.groupService.group = emptyGroup;
     clearTokens();
     this.router.navigate(["/"]);
   }
