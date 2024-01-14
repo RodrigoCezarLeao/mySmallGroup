@@ -1,10 +1,3 @@
-
-<div id="buttons_table_manage_participant">
-    <span class="material-symbols-outlined" (click)="addNewParticipant()">add_circle</span>
-    <span [class]="isSaving ? 'material-symbols-outlined rotate-always' : 'not_visible'">{{isSaving ? 'progress_activity': ''}}</span>
-    <span class="material-symbols-outlined" (click)="saveParticipants()" [class]="saveButtonClass">save</span>    
-</div>
-
 <div id="participants_table">
     <div *ngFor="let participant of participants" class="participant_box">
         <div class="participant_line">
@@ -46,4 +39,11 @@
 
         <span class="material-symbols-outlined pointer" (click)="deleteParticipant(participant)">delete</span>        
     </div>
+</div>
+
+
+<div id="buttons_table_manage_participant">
+    <span class="material-symbols-outlined" (click)="addNewParticipant()">add_circle</span>
+    <span [class]="isSaving ? 'material-symbols-outlined rotate-always' : 'not_visible'">{{isSaving ? 'progress_activity': ''}}</span>
+    <span class="material-symbols-outlined" (click)="saveParticipants()" [class]="saveButtonClass">save</span>    
 </div>
