@@ -24,11 +24,13 @@ export class EventsViewComponent {
     this.getGroup();
     this.generateCalendarMonthLabels();
     this.handleCalendarClick(this.referenceDate.getDate().toString());
-
-    this.hub.subscribe(RETURN_EDIT_EVENT_PAGE, (args: string) => {
-      this.referenceDate = new Date(args + " 00:00");
-      this.generateCalendarMonthLabels();
-      setTimeout(() => this.handleCalendarClick(this.referenceDate.getDate().toString()), 50);
+    
+    this.hub.subscribe(RETURN_EDIT_EVENT_PAGE, (args: string) => {      
+      if (!args.includes(":")){
+        this.referenceDate = new Date(args + " 00:00");
+        this.generateCalendarMonthLabels();
+        setTimeout(() => this.handleCalendarClick(this.referenceDate.getDate().toString()), 50);
+      }
       
     });
   }
