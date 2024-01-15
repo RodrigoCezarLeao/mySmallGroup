@@ -160,6 +160,10 @@ export class TranslateService {
       "pt-br": "A quantidade máxima de participantes é 30.",
       "en-us": "The max size of participants is 30.",
     },
+    "toggle_shuffle_participants": {
+      "pt-br": "Visualizar [ ] / Sortear [ X ]",
+      "en-us": "Visualize [ ] / Shuffle [ X ]",
+    },
     // No use
     "alert_error_empty_title_edition": {
       "pt-br": "O campo do título está vazio.",

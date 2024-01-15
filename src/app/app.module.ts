@@ -10,6 +10,10 @@ import { ManageParticipantsComponent } from './component/manage-participants/man
 import { FullscreenComponent } from './feature/fullscreen/fullscreen.component';
 import { EventsViewComponent } from './component/calendar/events-view/events-view.component';
 import { EventManagerComponent } from './component/calendar/event-manager/event-manager.component';
+import { ShuffleDialogComponent } from './component/calendar/shuffle-dialog/shuffle-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
+  
 
 @NgModule({
   declarations: [
@@ -20,12 +24,14 @@ import { EventManagerComponent } from './component/calendar/event-manager/event-
     ManageParticipantsComponent,
     FullscreenComponent,
     EventsViewComponent,
-    EventManagerComponent
+    EventManagerComponent,
+    ShuffleDialogComponent,    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

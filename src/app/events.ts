@@ -10,6 +10,12 @@ export const EDIT_EVENT = "EDIT_EVENT";
 // Occurs when the return button is pressed to the calendar view
 export const RETURN_EDIT_EVENT_PAGE = "RETURN_EDIT_EVENT_PAGE";
 
+// Occurs when the presence must be shuffled
+export const OPEN_SHUFFLE_DIALOG = "OPEN_SHUFFLE_DIALOG";
+
+// Occurs when the presence must be shuffled
+export const CLOSE_SHUFFLE_DIALOG = "CLOSE_SHUFFLE_DIALOG";
+
 
 
 
