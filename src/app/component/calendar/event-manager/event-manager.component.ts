@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { EDIT_EVENT } from 'src/app/events';
+import { EDIT_EVENT, RETURN_EDIT_EVENT_PAGE } from 'src/app/events';
 import { createEmptyEvent, event } from 'src/app/interface/event';
 import { emptyGroup, group } from 'src/app/interface/group';
 import { participant } from 'src/app/interface/participant';
@@ -41,17 +41,28 @@ export class EventManagerComponent {
   }
   
   async saveEvent(){
-    this.isSaving = true;
-    const newEventsList = structuredClone(this.group.events) ?? [];
-
-    if (!newEventsList.find((x: event) => x.id === this.event.id))
-      newEventsList.push(this.event);
-
-    await this.groupService.updateEvent(newEventsList);
-    this.isSaving = false;
+    if (!this.isButtonDisabled()){
+      this.isSaving = true;
+      const newEventsList = structuredClone(this.group.events) ?? [];
+  
+      if (!newEventsList.find((x: event) => x.id === this.event.id))
+        newEventsList.push(this.event);
+  
+      await this.groupService.updateEvent(newEventsList);
+      this.isSaving = false;
+    }
   }
   
   isButtonDisabled(){
+    if (this.event.title && this.event.dateStr)
+      return false;
+    
+    return true;
+  }
+
+  returnPage(){
+    setTimeout(() => this.hub.notifyArgs(RETURN_EDIT_EVENT_PAGE, this.event.dateStr), 50);
+    this.router.navigate(['/calendar']);
   }
 
 }

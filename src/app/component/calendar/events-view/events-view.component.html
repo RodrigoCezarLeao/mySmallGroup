@@ -9,21 +9,22 @@
         <button (click)="addMonth(1)">&gt;&gt;</button>
     </div>
 
-    <div style="display: flex;">
+    <div style="display: flex;" id="calendar_box_wrapper">
         <div id="calendar_box">
-            <div *ngFor="let day of daysLabels; let i=index" [class]="isItExcess(i) ? 'day_box excess' : isItToday(day) ? 'day_box today' : 'day_box'" (click)="handleCalendarClick(day)">
+            <div *ngFor="let day of daysLabels; let i=index" [class]="isItExcess(i) ? 'day_box excess' : isItReferenceDay(day) ? 'day_box reference_day' : 'day_box'" (click)="handleCalendarClick(day)">
                 <p *ngIf="day !== '-'">
                     {{day}}
                 </p>
+                <span class="material-symbols-outlined event_today" *ngIf="isThereEventToday(day)">local_activity</span>
             </div>
         </div>
     </div>
 
-    <hr/>
+    
 
     <div id="day_activities">
-        <h3>{{formatTitleDate()}}</h3>
-        <table>
+        <!-- <h3>{{formatTitleDate()}}</h3> -->
+        <table id="day_activities_table">
             <tr>
                 <th>{{intl.translate("events_manager_title")}}</th>
                 <th>{{intl.translate("events_view_edit")}}</th>

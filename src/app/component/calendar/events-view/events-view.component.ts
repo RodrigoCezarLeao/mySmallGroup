@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { EDIT_EVENT } from 'src/app/events';
+import { EDIT_EVENT, RETURN_EDIT_EVENT_PAGE } from 'src/app/events';
 import { firstDayOfMonth, formatDayMonthYear, formatMonthYear, formatYearMonthDay, howManyDaysInMonth, isItToday } from 'src/app/helpers/date_time';
-import { event } from 'src/app/interface/event';
+import { createEmptyEvent, event } from 'src/app/interface/event';
 import { emptyGroup, group } from 'src/app/interface/group';
 import { GroupService } from 'src/app/service/group.service';
 import { HubService } from 'src/app/service/hub.service';
@@ -24,6 +24,13 @@ export class EventsViewComponent {
     this.getGroup();
     this.generateCalendarMonthLabels();
     this.handleCalendarClick(this.referenceDate.getDate().toString());
+
+    this.hub.subscribe(RETURN_EDIT_EVENT_PAGE, (args: string) => {
+      this.referenceDate = new Date(args + " 00:00");
+      this.generateCalendarMonthLabels();
+      setTimeout(() => this.handleCalendarClick(this.referenceDate.getDate().toString()), 50);
+      
+    });
   }
 
   formatTitleDate(){
@@ -79,11 +86,8 @@ export class EventsViewComponent {
     this.generateCalendarMonthLabels();
   }
 
-  isItToday(day: string){    
-    return this.referenceDate.getFullYear() === new Date().getFullYear() &&
-          this.referenceDate.getMonth() === new Date().getMonth() ?          
-            isItToday(day, new Date()) : 
-            false;
+  isItReferenceDay(day: string){    
+    return isItToday(day, this.referenceDate);
   }
 
   isItExcess(i: number){
@@ -92,12 +96,24 @@ export class EventsViewComponent {
     return false;
   }
 
-  addNewEvent(){
+  isThereEventToday(day: string){
+    const auxDate =  formatYearMonthDay(this.referenceDate).slice(0,8) + day.padStart(2, "0");
+    const auxArray = this.group.events.filter(x => x.dateStr === auxDate);    
+    if (auxArray.length > 0)
+      return true;
+
+    return false;
+  }
+
+  addNewEvent(){    
+    const emptyEvent = createEmptyEvent();
+    emptyEvent.dateStr = formatYearMonthDay(this.referenceDate);
+    setTimeout(() => this.hub.notifyArgs(EDIT_EVENT, emptyEvent), 50);
     this.router.navigate(["/calendar_event"]);
   }
 
   editEvent(event: event){
-    setTimeout(() => this.hub.notifyArgs(EDIT_EVENT, event), 100);
+    setTimeout(() => this.hub.notifyArgs(EDIT_EVENT, event), 50);
     this.router.navigate(["/calendar_event"]);
   }
 

@@ -7,6 +7,9 @@ export const SMALL_GROUP_CHANGE = "SMALL_GROUP_CHANGE";
 // Occurs when the event need to be edited
 export const EDIT_EVENT = "EDIT_EVENT";
 
+// Occurs when the return button is pressed to the calendar view
+export const RETURN_EDIT_EVENT_PAGE = "RETURN_EDIT_EVENT_PAGE";
+
 
 
 
