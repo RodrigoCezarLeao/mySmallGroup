@@ -156,6 +156,10 @@ export class TranslateService {
       "pt-br": "Excluir",
       "en-us": "Delete",
     },
+    "alert_max_participants_added": {
+      "pt-br": "A quantidade máxima de participantes é 30.",
+      "en-us": "The max size of participants is 30.",
+    },
     // No use
     "alert_error_empty_title_edition": {
       "pt-br": "O campo do título está vazio.",

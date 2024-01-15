@@ -102,3 +102,8 @@ span#return_button {
     cursor: pointer;
     color: var(--bege);
 }
+
+span.button_disabled {
+    cursor: default;
+    background: var(--dark-pink);
+}

@@ -52,8 +52,12 @@ export class ManageParticipantsComponent {
   }
 
   addNewParticipant(){
-    this.participants.push(createEmptyParticipant());
-    this.checkIfParticipantsNeedToBeUpdated();
+    if(this.participants.length < 30){
+      this.participants.push(createEmptyParticipant());
+      this.checkIfParticipantsNeedToBeUpdated();
+    }else{
+      alert(this.intl.translate("alert_max_participants_added"));
+    }
   }
 
   deleteParticipant(participant: participant){

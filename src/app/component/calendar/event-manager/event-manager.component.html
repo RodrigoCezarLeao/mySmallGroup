@@ -1,8 +1,8 @@
-<span class="material-symbols-outlined" id="return_button" (click)="this.router.navigate(['/calendar'])">keyboard_return</span>
+<span class="material-symbols-outlined" id="return_button" (click)="returnPage()">keyboard_return</span>
 
 <div id="buttons_event_manager">
     <span [class]="isSaving ? 'material-symbols-outlined rotate-always' : 'not_visible'">{{isSaving ? 'progress_activity': ''}}</span>
-    <span class="material-symbols-outlined" (click)="saveEvent()">save</span>    
+    <span [class]="isButtonDisabled() ? 'material-symbols-outlined button_disabled' : 'material-symbols-outlined'" (click)="saveEvent()">save</span>    
 </div>
 
 <section id="event_form">
