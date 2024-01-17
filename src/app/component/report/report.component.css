@@ -1,0 +1,123 @@
+/* Filters */
+
+header#report_filters {
+    /* border: 1px solid black; */
+    width: 100%;
+    height: 25vh;
+    overflow: hidden;
+    position: relative;
+}
+
+header#report_filters label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+header#report_filters label input {
+    text-align: center;
+}
+
+header#report_filters div.report_filters_line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header#report_filters div.report_filters_line label#report_filter_name_flag {
+    width: 50px;
+    text-align: center;    
+}
+
+header#report_filters span {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    background: var(--blue);
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 2em;
+    color: var(--bege);
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+
+
+/* Content */
+
+section#report_results {
+    display: flex;
+    justify-content: center;    
+    height: 65vh;
+    width: 95%;
+    margin: 0 auto;
+}
+
+section#report_results section:nth-child(1){
+    overflow-x: auto;
+}
+section#report_results section:nth-child(2){
+    width: 65%;
+    /* border: 1px solid black; */
+    overflow-y: auto;
+}
+
+div.table_line {
+    display: flex;
+    width: 95%;
+    margin: 0 auto;
+}
+
+div.table_line div.table_cell {    
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+section#report_results section:nth-child(1) div.table_line div.table_cell:nth-child(1) {
+    font-size: 0.7em;
+    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+    height: 50px;
+    min-height: 50px;
+    max-height: 50px;
+}
+section#report_results section:nth-child(1) div.table_line div.table_cell:nth-child(2) {
+    font-size: 0.7em;
+    width: 50px;
+    min-width: 50px;
+    max-width: 50px;
+    height: 50px;
+    min-height: 50px;
+    max-height: 50px;
+}
+
+section#report_results section:nth-child(2) div.table_line div.table_cell {
+    font-size: 0.6em;
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    height: 50px;
+    min-height: 50px;
+    max-height: 50px;
+}
+
+
+div.table_line div.table_scrollable {
+    display: flex;
+    overflow-y: auto;
+}
+
+.presence {
+    background: green;
+}
+.absent {
+    background: red;
+}
+

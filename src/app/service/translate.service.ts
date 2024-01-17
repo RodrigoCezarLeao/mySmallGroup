@@ -164,6 +164,26 @@ export class TranslateService {
       "pt-br": "Visualizar [ ] / Sortear [ X ]",
       "en-us": "Visualize [ ] / Shuffle [ X ]",
     },
+    "report_filter_start_date": {
+      "pt-br": "Data inicial",
+      "en-us": "Start date",
+    },
+    "report_filter_final_date": {
+      "pt-br": "Data final",
+      "en-us": "Final date",
+    },
+    "report_filter_fullname_flag": {
+      "pt-br": "Flag Nome?",
+      "en-us": "Name flag?",
+    },
+    "report_table_column_participant": {
+      "pt-br": "Part.",
+      "en-us": "Part.",
+    },
+    "report_table_column_frequency": {
+      "pt-br": "Freq.",
+      "en-us": "Freq.",
+    },
     // No use
     "alert_error_empty_title_edition": {
       "pt-br": "O campo do título está vazio.",

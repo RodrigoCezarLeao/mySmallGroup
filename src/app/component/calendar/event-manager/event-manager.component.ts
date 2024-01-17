@@ -50,10 +50,12 @@ export class EventManagerComponent {
     if (!this.isButtonDisabled()){
       this.hub.notify(CLOSE_SHUFFLE_DIALOG);
       this.isSaving = true;
-      const newEventsList = structuredClone(this.group.events) ?? [];
+      let newEventsList = structuredClone(this.group.events) ?? [];
   
-      if (!newEventsList.find((x: event) => x.id === this.event.id))
+      if (!newEventsList.find((x: event) => x.id === this.event.id)){
         newEventsList.push(this.event);
+        newEventsList = newEventsList.sort((a: event, b:  event) => a.dateStr > b.dateStr ? 1 : -1);
+      }
   
       await this.groupService.updateEvent(newEventsList);
       this.isSaving = false;
