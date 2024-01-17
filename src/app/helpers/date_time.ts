@@ -14,6 +14,11 @@ export const formatDayMonthYear = (date: Date) => {
     return `${(date.getDate()).toString().padStart(2, "0")}/${(date.getMonth()+1).toString().padStart(2, "0")}/${date.getFullYear()}`;
 }
 
+export const formatAbbDayMonthYear = (date: Date) => {
+    return `${(date.getDate()).toString().padStart(2, "0")}/${(date.getMonth()+1).toString().padStart(2, "0")}`;
+    ///${date.getFullYear().toString().replace("20", "")}
+}
+
 export const formatYearMonthDay = (date: Date) => {
     return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, "0")}-${(date.getDate()).toString().padStart(2, "0")}`;
 }

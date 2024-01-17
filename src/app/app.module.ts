@@ -12,6 +12,7 @@ import { EventsViewComponent } from './component/calendar/events-view/events-vie
 import { EventManagerComponent } from './component/calendar/event-manager/event-manager.component';
 import { ShuffleDialogComponent } from './component/calendar/shuffle-dialog/shuffle-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ReportComponent } from './component/report/report.component';
 
   
 
@@ -25,7 +26,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FullscreenComponent,
     EventsViewComponent,
     EventManagerComponent,
-    ShuffleDialogComponent,    
+    ShuffleDialogComponent,
+    ReportComponent,    
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,72 @@
+<!-- Filters -->
+
+<header id="report_filters">
+    <div class="report_filters_line">
+        <label id="report_filter_name_flag">
+            {{intl.translate("report_filter_fullname_flag")}}
+            <input type="checkbox" [(ngModel)]="fullnameFlag"/>
+        </label>
+
+        <label>
+            {{intl.translate("report_filter_start_date")}}
+            <input type="date" [(ngModel)]="filterStartDate"/>
+        </label>
+    
+        <label>
+            {{intl.translate("report_filter_final_date")}}
+            <input type="date" [(ngModel)]="filterFinalDate"/>
+        </label>
+    </div>
+
+    <div class="report_filters_line">        
+    </div>
+
+    <span class="material-symbols-outlined">search</span>
+</header>
+
+
+<!-- Content -->
+
+<section id="report_results">
+    <section>
+        <div class="table_line">
+            <div class="table_cell">{{intl.translate("report_table_column_participant")}}</div>
+            <div class="table_cell">{{intl.translate("report_table_column_frequency")}}</div>
+        </div>
+    
+        <div *ngFor="let participant of this.group.participants" class="table_line">
+            <div class="table_cell">{{fullnameFlag ? participant.name : participant.alias}}</div>
+            <div class="table_cell">{{frequencyStatus(participant)}}</div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="table_line">
+            <div class="table_cell" *ngFor="let event of this.group.events">{{eventDate(event)}}</div>
+        </div>
+
+        <div class="table_line" *ngFor="let participant of this.group.participants">
+            <div *ngFor="let event of this.group.events" [class]="'table_cell ' + participantWasPresentInEvent(participant, event)">
+                {{participant.alias.slice(0,3)}}
+            </div>
+        </div>
+    </section>
+
+    <!-- <table>
+        <tr>
+            <th>{{intl.translate("report_table_column_participant")}}</th>
+            <th>{{intl.translate("report_table_column_frequency")}}</th>
+            <div class="scrollable-y">
+                <th *ngFor="let event of this.group.events">{{eventDate(event)}}</th>
+            </div>
+        </tr>
+
+        <tr *ngFor="let participant of this.group.participants">
+            <td>{{fullnameFlag ? participant.name : participant.alias}}</td>
+            <td>{{frequencyStatus(participant)}}</td>
+            <div class="scrollable-y">
+                <td *ngFor="let event of this.group.events" [class]="participantWasPresentInEvent(participant, event)"></td>
+            </div>
+        </tr>
+    </table> -->
+</section>
