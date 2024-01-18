@@ -9,7 +9,7 @@ import { closeFullScreen, openFullScreen } from 'src/app/helpers/general';
   styleUrls: ['./fullscreen.component.css']
 })
 export class FullscreenComponent {
-  isFullScreen = false;
+  isFullScreen = true;
 
   constructor(private router: Router){}
 

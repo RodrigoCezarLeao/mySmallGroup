@@ -26,3 +26,16 @@ export const formatYearMonthDay = (date: Date) => {
 export const isItToday = (day: string, date: Date) => {
     return day === date.getDate().toString();
 }
+
+export const isStrDateWindowValid = (date1: string, date2: string) => {
+    if (!date1 || date1.length !== 10 || !date1.includes("-"))
+        return false;
+
+    if (!date2 || date2.length !== 10 || !date2.includes("-"))
+        return false;
+    
+    if (date1 > date2)
+        return false;
+    
+    return true;
+}

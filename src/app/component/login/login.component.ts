@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { checkIfLoggedIn, clearTokens, getInfo, saveTokensInSessionStorage } from 'src/app/helpers/base_request';
-import { openFullScreen } from 'src/app/helpers/general';
+import { isMobile, openFullScreen } from 'src/app/helpers/general';
 import { GroupService } from 'src/app/service/group.service';
 import { TranslateService } from 'src/app/service/translate.service';
 
@@ -31,6 +31,9 @@ export class LoginComponent {
   }
 
   async loginAttempt(){
+    if (isMobile())
+      openFullScreen();
+    
     this.isLoading = true;
     
     let res = await getInfo(this.passcode);
