@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { formatAbbDayMonthYear, formatDayMonthYear } from 'src/app/helpers/date_time';
+import { formatAbbDayMonthYear, formatDayMonthYear, isStrDateWindowValid } from 'src/app/helpers/date_time';
 import { event } from 'src/app/interface/event';
 import { emptyGroup, group } from 'src/app/interface/group';
 import { participant } from 'src/app/interface/participant';
@@ -13,8 +13,9 @@ import { TranslateService } from 'src/app/service/translate.service';
 })
 export class ReportComponent {
   group: group = emptyGroup;
-  filterStartDate: Date = new Date();
-  filterFinalDate: Date = new Date();
+  eventsToShow: event[] = [];  
+  filterStartDate: string = "";
+  filterFinalDate: string = "";
   fullnameFlag = true;
 
   constructor(public intl: TranslateService, private groupService: GroupService){
@@ -23,8 +24,8 @@ export class ReportComponent {
   
   async getGroup(){
     if (await this.groupService.init()){
-      this.group = this.groupService.group;      
-      console.log("🚀 ~ ReportComponent ~ getGroup ~ this.group:", this.group)
+      this.group = this.groupService.group;
+      this.eventsToShow = structuredClone(this.group.events);
     }
   }
 
@@ -42,5 +43,11 @@ export class ReportComponent {
       return "presence";
 
     return "absent";
+  }
+
+  applyFiltersSearch(){
+    if (isStrDateWindowValid(this.filterStartDate, this.filterFinalDate)){
+      this.eventsToShow = this.group.events.filter(x => x.dateStr >= this.filterStartDate && x.dateStr <= this.filterFinalDate)
+    }
   }
 }
