@@ -14,6 +14,7 @@ import { TranslateService } from 'src/app/service/translate.service';
 })
 export class SettingsComponent {
   @ViewChild("editTitleInput") editTitleInput: any;
+  @ViewChild("editTemplateInput") editTemplateInput: any;
   
   group: group = emptyGroup;
   newGroupTitle = "";
@@ -68,6 +69,16 @@ export class SettingsComponent {
     }
 
     this.editTitleInput.nativeElement.blur();
+    this.isUpdatingTitle = false;    
+  }
+
+  async updateSmallGroupTemplate(){    
+    this.isUpdatingTitle = true;
+
+    const res = await this.groupService.updateTemplate(this.group.template);
+    const token = getsavedTokensInSessionStorage();
+
+    this.editTemplateInput.nativeElement.blur();
     this.isUpdatingTitle = false;    
   }
 }

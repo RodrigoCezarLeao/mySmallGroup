@@ -64,6 +64,7 @@ export class GroupService {
                   name
                   participants
                   events
+                  template
               }
           }
     `};
@@ -114,6 +115,23 @@ export class GroupService {
           mutation {
               updateGroup(data: {
                 events: ${cleanIt(events)},                
+              }, where: {id: "${token.groupID}"}) { id }
+          }
+    `};
+    
+    const res = (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery))?.data?.updateGroup;
+    await this.publishGroup();
+    return res;
+  }
+
+  async updateTemplate(template: Record<string, any>){
+    const token = getsavedTokensInSessionStorage();
+
+    const cmsQuery = { 
+      query : `
+          mutation {
+              updateGroup(data: {
+                template: ${cleanIt(template)},
               }, where: {id: "${token.groupID}"}) { id }
           }
     `};

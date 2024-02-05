@@ -1,4 +1,16 @@
-<div>
-    <span class="material-symbols-outlined" (click)="closeDialog()">close</span>
-    <textarea [value]="description" disabled="true"></textarea>
+<div id="father">
+    <span class="material-symbols-outlined" (click)="closeDialog()" id="close">close</span>
+    <!-- <textarea [value]="description" disabled="true" [style]="fontSize"></textarea> -->
+
+    <div>
+        <p *ngFor="let row of description">
+            <span *ngIf="row.length === 1">{{row}}</span>
+            <span *ngIf="row.length === 0"></span>
+            <span *ngIf="row.length === 2">
+                <b>{{row[0]}}</b>
+                <span>{{connector}}</span>
+                <b>{{row[1]}}</b>
+            </span>
+        </p>
+    </div>
 </div>
