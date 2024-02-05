@@ -31,9 +31,6 @@ export class LoginComponent {
   }
 
   async loginAttempt(){
-    if (isMobile())
-      openFullScreen();
-    
     this.isLoading = true;
     
     let res = await getInfo(this.passcode);
@@ -46,7 +43,6 @@ export class LoginComponent {
       this.invalidPasswordMessage = this.intl.translate("success_password");
       if (await this.groupService.init(res)){
         saveTokensInSessionStorage(res);
-        openFullScreen();
         this.router.navigate(['/settings']);
       }else {
         clearTokens();
