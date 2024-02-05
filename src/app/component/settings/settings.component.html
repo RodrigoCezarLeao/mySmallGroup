@@ -16,7 +16,7 @@
                 (keypress)="handleSmallGroupTitleTyping($event)"
                 #editTitleInput
             />
-            <span class="material-symbols-outlined edit_title" (click)="updateSmallGroupTitle()">edit</span>        
+            <span class="material-symbols-outlined edit_title" (click)="updateSmallGroupTitle()">edit</span>
         </div>
     </div>
 
@@ -28,6 +28,24 @@
         <img class="language" (click)="changeLanguage('en-us')" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png"/>
     </div>
 
+    <hr />
+
+    <!-- Shuffle Config -->
+
+    <div id="shuffle_config">
+
+        <label>
+            {{intl.translate("settings_shuffle_event_connector")}}
+            <input type="text" [(ngModel)]="group.template['shuffle_connector_word']" #editTemplateInput/>
+        </label>
+
+        <label>
+            {{intl.translate("settings_shuffle_dialog_font_size")}}
+            <input type="text" [(ngModel)]="group.template['shuffle_dialog_font_size']" #editFontSizeInput/>
+        </label>
+        
+        <span class="material-symbols-outlined edit_title" (click)="updateSmallGroupTemplate()">edit</span>
+    </div>
     <hr />
 
     <!-- Log Out -->

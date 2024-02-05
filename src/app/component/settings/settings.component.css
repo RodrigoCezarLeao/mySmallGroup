@@ -32,7 +32,7 @@ main span.edit_title {
     visibility: inherit;
 }
 
-main input#edit_title_input {
+main input {
     font-size: 1.4em;        
     text-align: center;
     background: rgba(246, 114, 128, .2);
@@ -41,7 +41,7 @@ main input#edit_title_input {
     cursor: pointer;
 }
 
-main input#edit_title_input:focus {
+main input:focus {
     outline: 2px solid var(--wine);
 }
 
@@ -76,4 +76,14 @@ img.language {
 
 img.language:hover {
     box-shadow: 0px 0px 8px lightgray;
+}
+
+main label { 
+    text-align: center;
+    margin: 20px;
+    font-weight: 700;
+}
+
+main div#shuffle_config span {
+    position: initial;
 }

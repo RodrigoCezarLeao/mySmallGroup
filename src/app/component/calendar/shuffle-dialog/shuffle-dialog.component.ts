@@ -9,9 +9,15 @@ import { HubService } from 'src/app/service/hub.service';
 })
 export class ShuffleDialogComponent {
   description = "";
+  fontSize = "16 px";
+  connector = "";
 
   constructor(private hub: HubService){
-    this.hub.subscribe(OPEN_SHUFFLE_DIALOG, (args: string) => this.description = args);
+    this.hub.subscribe(OPEN_SHUFFLE_DIALOG, (args: any) => {
+      this.fontSize = `font-size: ${args["template"]["shuffle_dialog_font_size"]}px`;
+      this.connector = args["template"]["shuffle_connector_word"];
+      this.description = args["desc"].split("\n").map((x: string) => x.split(this.connector));      
+    });
   }
 
   closeDialog(){

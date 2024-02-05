@@ -184,6 +184,22 @@ export class TranslateService {
       "pt-br": "Freq.",
       "en-us": "Freq.",
     },
+    "shuffle_dialog_date_of_shuffle": {
+      "pt-br": "Sorteio de @var",
+      "en-us": "Shuffle date: @var",
+    },
+    "settings_shuffle_event_connector": {
+      "pt-br": "Palavra de conexão do sorteio: ",
+      "en-us": "Shuffle connector word: ",
+    },
+    "settings_shuffle_dialog_font_size": {
+      "pt-br": "Tamanho da fonte do sorteio: ",
+      "en-us": "Shuffle font size: ",
+    },
+    "alert_confirm_delete_event": {
+      "pt-br": "Deseja excluir o evento do dia @var? ",
+      "en-us": "Do you want to delete the event of @var?",
+    },
     // No use
     "alert_error_empty_title_edition": {
       "pt-br": "O campo do título está vazio.",

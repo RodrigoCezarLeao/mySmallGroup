@@ -21,4 +21,8 @@ textarea {
     line-height: 1.5em;
 }
 
-span { cursor: pointer; position: fixed;}
+span#close { cursor: pointer; position: fixed; z-index: 14; right: 65px; top: 20px;}
+
+div {
+    text-align: center;
+}

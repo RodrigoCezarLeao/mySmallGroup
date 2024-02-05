@@ -6,6 +6,7 @@ export interface group {
     name: string;
     participants: participant[];
     events: event[];
+    template: Record<string, any>;
 }
 
 export const emptyGroup: group = {
@@ -13,4 +14,5 @@ export const emptyGroup: group = {
     name: "",
     participants: [],
     events: [],
+    template: {}
 }

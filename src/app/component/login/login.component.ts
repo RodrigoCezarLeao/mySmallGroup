@@ -46,6 +46,7 @@ export class LoginComponent {
       this.invalidPasswordMessage = this.intl.translate("success_password");
       if (await this.groupService.init(res)){
         saveTokensInSessionStorage(res);
+        openFullScreen();
         this.router.navigate(['/settings']);
       }else {
         clearTokens();

@@ -9,6 +9,7 @@ import { HubService } from 'src/app/service/hub.service';
 import { TranslateService } from 'src/app/service/translate.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ShuffleDialogComponent } from '../shuffle-dialog/shuffle-dialog.component';
+import { formatDayMonthYear } from 'src/app/helpers/date_time';
 
 @Component({
   selector: 'app-event-manager',
@@ -88,22 +89,24 @@ export class EventManagerComponent {
 
     if (this.shuffleViewOrUpdate)
       this.event.presence = shuffle(this.event.presence);
+    
+    let fDate = formatDayMonthYear(new Date(this.event.dateStr + "T00:00"));
+    let desc = `${this.intl.translateWithParams("shuffle_dialog_date_of_shuffle", [fDate])}\n`;
 
-    let desc = "";
     for(let i = 0; i < this.event.presence.length; i++){
       if (i < this.event.presence.length - 1){
         const part = this.group.participants.find(x => x.id === this.event.presence[i])
-        const nexPart = this.group.participants.find(x => x.id === this.event.presence[i + 1]);
+        const nextPart = this.group.participants.find(x => x.id === this.event.presence[i + 1]);
   
         if (part){
-          desc += `${part?.name} ora por ${nexPart?.name}\n`;
+          desc += `${part?.role === "guest" ? part?.name + "*" : part?.name} ${this.group.template["shuffle_connector_word"]} ${nextPart?.role === "guest" ? nextPart?.name + "*" :nextPart?.name}\n`;
         }
       }else if (i === this.event.presence.length - 1){
         const part = this.group.participants.find(x => x.id === this.event.presence[i])
-        const nexPart = this.group.participants.find(x => x.id === this.event.presence[0]);
+        const nextPart = this.group.participants.find(x => x.id === this.event.presence[0]);
 
         if (part){
-          desc += `${part?.name} ora por ${nexPart?.name}\n`;
+          desc += `${part?.role === "guest" ? part?.name + "*" : part?.name} ${this.group.template["shuffle_connector_word"]} ${nextPart?.role === "guest" ? nextPart?.name + "*" :nextPart?.name}\n`;
         }
       }
     }
@@ -116,7 +119,7 @@ export class EventManagerComponent {
 
     
     this.dialog.open(ShuffleDialogComponent, {width: '350px', position: {top: '-200px', right: '-150px'}});    
-    this.hub.notifyArgs(OPEN_SHUFFLE_DIALOG, desc);
+    this.hub.notifyArgs(OPEN_SHUFFLE_DIALOG, {desc: desc, template: this.group.template});
   }
 
 }
