@@ -49,16 +49,17 @@ div.participant_box input:focus {
 
 
 /* border: 1px solid black; */
-div#buttons_table_manage_participant {
-    height: 10vh;
-    width: 100%;    
+div#buttons_table_manage_participant {    
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;    
+    align-items: center;
+    position: fixed;
+    top: 5px;
 }
 
 div#buttons_table_manage_participant span {
-    margin: 0px 10px;
+    margin: 0px 50px;
 }
 
 span.rotate-always {
@@ -66,9 +67,9 @@ span.rotate-always {
 }
 
 div#participants_table {
-    height: 72vh;
     border-bottom: 2px solid var(--wine);
     overflow-y: auto;
+    padding-bottom: 50px;
 }
  
 
@@ -77,8 +78,8 @@ div#buttons_table_manage_participant span {
     cursor: pointer;
     background: var(--blue);
     border-radius: 50%;
-    padding: 8px;
-    font-size: 2em;
+    padding: 4px;
+    font-size: 1.5em;
     color: var(--bege);
     font-weight: 700;
 }

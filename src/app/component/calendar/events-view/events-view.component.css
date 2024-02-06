@@ -2,12 +2,13 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;   
+    padding-bottom: 50px;
     /* height: 20vh;  */
 }
 
 
 div#calendar_box_wrapper {
-    height: 25vh;
+    /* height: 25vh; */
     /* border: 1px solid black; */
 }
 
@@ -22,7 +23,7 @@ div.day_box:nth-child(7n) {
 }
 div.day_box {
     width: 12.5%;
-    height: 25px;
+    /* height: 15px; */
     background: var(--blue);
     color: white;
     border: 1px solid black;
@@ -76,7 +77,7 @@ div#buttons_table_manage_participant {
 }
 
 div#buttons_table_manage_participant span:nth-child(1){
-    position: absolute;
+    position: fixed;
     right: 10px;
 }
 
@@ -84,8 +85,8 @@ div#buttons_table_manage_participant span {
     cursor: pointer;
     background: var(--blue);
     border-radius: 50%;
-    padding: 8px;
-    font-size: 2em;
+    padding: 4px;
+    font-size: 1.5em;
     color: var(--bege);
     font-weight: 700;
 }
@@ -96,9 +97,9 @@ div#day_activities{
     text-align:center;    
     /* border: 1px solid black; */
     width: 90%;
-    height: 35vh;
+    /* height: 35vh; */
     overflow-y: auto;
-    margin: 70px;
+    margin: 15px;
 }
 
 table#day_activities_table {

@@ -81,4 +81,9 @@ export class SettingsComponent {
     this.editTemplateInput.nativeElement.blur();
     this.isUpdatingTitle = false;    
   }
+
+  async updateAll(){
+    await this.updateSmallGroupTitle();
+    await this.updateSmallGroupTemplate();
+  }
 }

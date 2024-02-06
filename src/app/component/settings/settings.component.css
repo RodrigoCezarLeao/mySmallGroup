@@ -9,7 +9,7 @@ main > div {
     flex-direction: column;
     align-items: center;
     position: relative;
-    margin: 20px 0px;
+    margin: 10px 0px;
 }
 
 main div h3 {
@@ -47,18 +47,21 @@ main input:focus {
 
 span#logout {
     cursor: pointer;
+    position: fixed;
+    top: 5px;
+    left: 5px;
 }
 
 span#title_loading{
-    position: absolute;
-    top: 27px;
-    right: -55px;
+    position: fixed;
+    top: 35px;
+    left: 5px;
 }
 
-section#participant_manager_table {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
+span#save_button {
+    position: fixed;
+    top: 35px;
+    right: 5px;
 }
 
 
@@ -69,8 +72,8 @@ div#flags {
 }
 
 img.language {
-    width: 50px;
-    height: 34px;
+    width: 30px;
+    height: 20px;
     cursor: pointer;
 }
 
@@ -80,7 +83,7 @@ img.language:hover {
 
 main label { 
     text-align: center;
-    margin: 20px;
+    margin: 10px;
     font-weight: 700;
 }
 
