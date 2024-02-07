@@ -13,6 +13,7 @@ import { EventManagerComponent } from './component/calendar/event-manager/event-
 import { ShuffleDialogComponent } from './component/calendar/shuffle-dialog/shuffle-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReportComponent } from './component/report/report.component';
+import { ImgDialogComponent } from './component/calendar/img-dialog/img-dialog.component';
 
   
 
@@ -27,7 +28,8 @@ import { ReportComponent } from './component/report/report.component';
     EventsViewComponent,
     EventManagerComponent,
     ShuffleDialogComponent,
-    ReportComponent,    
+    ReportComponent,
+    ImgDialogComponent,    
   ],
   imports: [
     BrowserModule,

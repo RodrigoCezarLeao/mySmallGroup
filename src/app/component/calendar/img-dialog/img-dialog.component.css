@@ -1,0 +1,16 @@
+div {
+    position: fixed;
+    top: 50px;
+    left: 5%;
+    right: 5%;    
+    background: white;
+    overflow: hidden;
+    padding: 5px;
+    background: var(--bege);
+    border: 1px solid var(--wine);
+    z-index: 13;
+}
+
+div img {
+    width: 100%;
+}

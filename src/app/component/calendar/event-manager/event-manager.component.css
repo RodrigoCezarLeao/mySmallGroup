@@ -81,6 +81,10 @@ div#buttons_event_manager span:nth-child(2){
 
 div#buttons_event_manager span:nth-child(3){
     position: absolute;
+    right: 80px;
+}
+div#buttons_event_manager span:nth-child(4){
+    position: absolute;
     right: 10px;
 }
 
@@ -130,4 +134,25 @@ div.shuffle_line input {
 div.shuffle_line input:focus {
     border: none;    
     outline: none;
+}
+
+
+img.event_imgs_upload {
+    width: 30px;
+}
+
+input.upload_files_input {
+    /* color: transparent; */
+    font-size: 0.8em;
+    width: 150px;
+}
+
+input.upload_files_input::file-selector-button {
+    background: var(--blue);
+    font-size: 1em !important;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    padding: 2px;
 }

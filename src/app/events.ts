@@ -16,6 +16,12 @@ export const OPEN_SHUFFLE_DIALOG = "OPEN_SHUFFLE_DIALOG";
 // Occurs when the presence must be shuffled
 export const CLOSE_SHUFFLE_DIALOG = "CLOSE_SHUFFLE_DIALOG";
 
+// Occurs when the presence img must be seen in separete dialog
+export const OPEN_IMG_DIALOG = "OPEN_IMG_DIALOG";
+
+// Occurs when the presence img dialog must be closed and deleted
+export const CLOSE_IMG_DIALOG_DELETE = "CLOSE_IMG_DIALOG_DELETE";
+
 
 
 

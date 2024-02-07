@@ -200,6 +200,14 @@ export class TranslateService {
       "pt-br": "Deseja excluir o evento do dia @var? ",
       "en-us": "Do you want to delete the event of @var?",
     },
+    "event_photos_upload": {
+      "pt-br": "Fotos: ",
+      "en-us": "Photos: ",
+    },
+    "prompt_confirm_img_delete": {
+      "pt-br": "Deseja excluir a imagem atual?",
+      "en-us": "Do you want to delete current image?",
+    },
     // No use
     "alert_error_empty_title_edition": {
       "pt-br": "O campo do título está vazio.",
