@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { CLOSE_SHUFFLE_DIALOG, EDIT_EVENT, OPEN_SHUFFLE_DIALOG, RETURN_EDIT_EVENT_PAGE } from 'src/app/events';
+import { CLOSE_IMG_DIALOG_DELETE, CLOSE_SHUFFLE_DIALOG, EDIT_EVENT, OPEN_IMG_DIALOG, OPEN_SHUFFLE_DIALOG, RETURN_EDIT_EVENT_PAGE } from 'src/app/events';
 import { createEmptyEvent, event } from 'src/app/interface/event';
 import { emptyGroup, group } from 'src/app/interface/group';
 import { participant } from 'src/app/interface/participant';
@@ -10,6 +10,8 @@ import { TranslateService } from 'src/app/service/translate.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ShuffleDialogComponent } from '../shuffle-dialog/shuffle-dialog.component';
 import { formatDayMonthYear } from 'src/app/helpers/date_time';
+import { EventphotoService } from 'src/app/service/eventphoto.service';
+import { ImgDialogComponent } from '../img-dialog/img-dialog.component';
 
 @Component({
   selector: 'app-event-manager',
@@ -17,19 +19,43 @@ import { formatDayMonthYear } from 'src/app/helpers/date_time';
   styleUrls: ['./event-manager.component.css']
 })
 export class EventManagerComponent {  
+  @ViewChild("files") files: any;
+
   group: group = emptyGroup;
   event: event = createEmptyEvent();  
   isSaving = false;
-  shuffleViewOrUpdate = false;
+  shuffleViewOrUpdate = false;  
+  imgUrls: any;
   
-  constructor(public groupService: GroupService, public router: Router, public intl: TranslateService, private hub: HubService, public dialog: MatDialog){
+  constructor(public groupService: GroupService, public router: Router, public intl: TranslateService, private hub: HubService, public dialog: MatDialog, private eventPhotoService: EventphotoService){
     this.hub.subscribe(EDIT_EVENT, (args: event) => {
       this.event = args
+      this.getImgs();
     });
     this.hub.subscribe(CLOSE_SHUFFLE_DIALOG, () => this.dialog.closeAll());
     this.getGroup();
   }
+  
+  async getImgs(){    
+    if (this.event.id && this.event.title){
+      this.imgUrls = await this.eventPhotoService.getEventPhotos(this.event.id);
+    }
+  }
 
+  async saveImgs(){
+    this.isSaving = true;
+    let files = this.files.nativeElement.files;
+    
+    for(let file of files){
+      const form = new FormData();
+      form.append('fileUpload', file);
+      let res = await this.eventPhotoService.uploadAsset(form, this.event.id);
+      this.imgUrls.push(res);
+    }    
+    
+    this.isSaving = false;
+  }
+  
   async getGroup(){
     if (await this.groupService.init()){
       this.group = this.groupService.group;
@@ -59,6 +85,9 @@ export class EventManagerComponent {
       }
   
       await this.groupService.updateEvent(newEventsList);
+
+      await this.saveImgs();
+
       this.isSaving = false;
     }
   }
@@ -120,6 +149,15 @@ export class EventManagerComponent {
     
     this.dialog.open(ShuffleDialogComponent, {width: '350px', position: {top: '-200px', right: '-150px'}});    
     this.hub.notifyArgs(OPEN_SHUFFLE_DIALOG, {desc: desc, template: this.group.template});
+  }
+
+  openImgModal(img: any){
+    this.dialog.open(ImgDialogComponent, {width: '350px', position: {top: '50px', right: '20px'}});    
+    this.hub.notifyArgs(OPEN_IMG_DIALOG, {imgUrl: img.url, imgId: img.id});
+    this.hub.subscribe(CLOSE_IMG_DIALOG_DELETE, (args: any) => {
+      this.imgUrls = this.imgUrls.filter((x: any) => x.id !== args[0]);
+      this.dialog.closeAll();
+    });
   }
 
 }

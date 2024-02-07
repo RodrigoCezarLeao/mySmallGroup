@@ -2,7 +2,8 @@
 
 <div id="buttons_event_manager">
     <span [class]="isSaving ? 'material-symbols-outlined rotate-always' : 'not_visible'">{{isSaving ? 'progress_activity': ''}}</span>
-    <span [class]="isButtonDisabled() ? 'material-symbols-outlined button_disabled' : 'material-symbols-outlined'" (click)="saveEvent()">save</span>    
+    <span [class]="isButtonDisabled() ? 'material-symbols-outlined button_disabled' : 'material-symbols-outlined'" (click)="saveEvent()">save</span>
+    <input type="file" multiple [src]="files" class="upload_files_input" #files/>
     <span class="material-symbols-outlined shuffle_presence" (click)="shuffleParticipants()">casino</span>
 </div>
 
@@ -34,6 +35,11 @@
     <div class="shuffle_line">
         <label>{{intl.translate("toggle_shuffle_participants")}}</label>
         <input type="checkbox" [(ngModel)]="shuffleViewOrUpdate"/>
+    </div>
+
+    <div class="event_form_line">
+        <label>{{intl.translate("event_photos_upload")}}</label>
+        <img *ngFor="let img of imgUrls" [src]="img.url" class="event_imgs_upload" (click)="openImgModal(img)"/>
     </div>
 
 </section>
