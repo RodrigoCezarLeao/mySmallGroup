@@ -1,0 +1,52 @@
+div#presence_modal {
+    position: fixed;
+    top: 25px;
+    left: 5%;
+    right: 5%;    
+    background: white;
+    overflow: hidden;
+    padding: 5px;
+    height: 90vh;
+    background: var(--bege);
+    border: 1px solid var(--wine);
+    z-index: 13;
+    text-align: center;
+    padding: 5px;
+}
+
+div#control {
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 1.3em;
+    justify-content: center;
+}
+
+div#control span {
+    margin: 0px 5px;
+}
+
+div#participants_frequency {
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* gap: 10px; */
+    /* justify-content: center; */
+    padding: 5px;
+    overflow-y: auto;
+    height: 75vh;
+    border: 1px solid var(--wine);
+}
+
+div#participants_frequency div {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;    
+    border: 1px solid var(--wine);    
+    text-align: center;
+    cursor: pointer;   
+}
+
+.presence {
+    background: var(--blue);
+    color: white;
+}

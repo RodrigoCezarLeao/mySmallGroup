@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { CLOSE_IMG_DIALOG_DELETE, CLOSE_SHUFFLE_DIALOG, EDIT_EVENT, OPEN_IMG_DIALOG, OPEN_SHUFFLE_DIALOG, RETURN_EDIT_EVENT_PAGE } from 'src/app/events';
+import { CLOSE_IMG_DIALOG_DELETE, CLOSE_SHUFFLE_DIALOG, EDIT_EVENT, OPEN_DESC_DIALOG, OPEN_IMG_DIALOG, OPEN_PRESENCE_DIALOG, OPEN_SHUFFLE_DIALOG, RETURN_EDIT_EVENT_PAGE } from 'src/app/events';
 import { createEmptyEvent, event } from 'src/app/interface/event';
 import { emptyGroup, group } from 'src/app/interface/group';
 import { participant } from 'src/app/interface/participant';
@@ -12,6 +12,8 @@ import { ShuffleDialogComponent } from '../shuffle-dialog/shuffle-dialog.compone
 import { formatDayMonthYear } from 'src/app/helpers/date_time';
 import { EventphotoService } from 'src/app/service/eventphoto.service';
 import { ImgDialogComponent } from '../img-dialog/img-dialog.component';
+import { DescriptionDialogComponent } from '../description-dialog/description-dialog.component';
+import { PresenceDialogComponent } from '../presence-dialog/presence-dialog.component';
 
 @Component({
   selector: 'app-event-manager',
@@ -61,17 +63,6 @@ export class EventManagerComponent {
       this.group = this.groupService.group;
     }
   }  
-
-  manageFrequency(participant: participant){    
-    if (this.isParticipantPresent(participant))
-      this.event.presence = this.event.presence.filter(x => x !== participant.id);
-    else
-      this.event.presence.push(participant.id);
-  }
-  
-  isParticipantPresent(participant: participant){
-    return this.event.presence.find(x => x === participant.id) ? true : false;
-  }
   
   async saveEvent(){
     if (!this.isButtonDisabled()){
@@ -139,25 +130,32 @@ export class EventManagerComponent {
         }
       }
     }
-
-
-    // if(this.event.description.includes("-----\n\n"))
-    //   this.event.description = this.event.description.split("-----\n\n")[0] + "-----\n\n" + desc;
-    // else
-    //   this.event.description = "-----\n\n" + desc;
-
     
     this.dialog.open(ShuffleDialogComponent, {width: '350px', position: {top: '-200px', right: '-150px'}});    
     this.hub.notifyArgs(OPEN_SHUFFLE_DIALOG, {desc: desc, template: this.group.template});
   }
 
   openImgModal(img: any){
-    this.dialog.open(ImgDialogComponent, {width: '350px', position: {top: '50px', right: '20px'}});    
+    this.dialog.open(ImgDialogComponent, {width: '350px'});
     this.hub.notifyArgs(OPEN_IMG_DIALOG, {imgUrl: img.url, imgId: img.id});
     this.hub.subscribe(CLOSE_IMG_DIALOG_DELETE, (args: any) => {
       this.imgUrls = this.imgUrls.filter((x: any) => x.id !== args[0]);
       this.dialog.closeAll();
     });
+  }
+
+  openDescriptionModal(){
+    this.dialog.open(DescriptionDialogComponent, {width: '350px'});    
+    this.hub.notifyArgs(OPEN_DESC_DIALOG, {desc: this.event.description, updateDesc: (newDesc: string) => {
+      this.event.description = newDesc;
+    }});
+  }
+  
+  openPresenceModal(){
+    this.dialog.open(PresenceDialogComponent, {width: '350px'});    
+    this.hub.notifyArgs(OPEN_PRESENCE_DIALOG, {presence: this.event.presence, participants: this.group.participants, updatepresence: (newPresence: string[]) => {
+      this.event.presence = newPresence;
+    }});
   }
 
 }

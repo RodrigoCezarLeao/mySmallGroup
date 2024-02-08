@@ -21,7 +21,16 @@ div.event_form_line label {
     text-align: right;
 }
 
-div.event_form_line input, div.event_form_line textarea, div.event_form_line div#participants_frequency {
+div.event_form_line button {
+    padding: 5px 10px;
+    background: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+div.event_form_line input {
     width: 65%;
     border: 1px solid black;
     text-align: center;
@@ -34,23 +43,6 @@ div.event_form_line textarea {
     height: 150px;
 }
 
-div#participants_frequency {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    padding: 5px;
-}
-
-div#participants_frequency div {
-    /* background: var(--wine); */
-    /* width: 60px; */
-    padding: 5px;
-    border-radius: 5px;    
-    border: 1px solid var(--wine);    
-    text-align: center;
-    cursor: pointer;    
-}
 
 .presence {
     background: var(--blue) !important;
@@ -80,10 +72,6 @@ div#buttons_event_manager span:nth-child(2){
 }
 
 div#buttons_event_manager span:nth-child(3){
-    position: absolute;
-    right: 80px;
-}
-div#buttons_event_manager span:nth-child(4){
     position: absolute;
     right: 10px;
 }

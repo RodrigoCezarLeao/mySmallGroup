@@ -18,8 +18,8 @@
         </label>
     </div>
 
-    <div class="report_filters_line">
-    </div>
+    <!-- <div class="report_filters_line">
+    </div> -->
 
     <span (click)="applyFiltersSearch()" class="material-symbols-outlined">search</span>
 </header>
@@ -35,8 +35,8 @@
         </tr>
 
         <tr *ngFor="let participant of this.group.participants">
-            <td class="fixed">{{fullnameFlag ? participant.name : participant.alias}} ({{frequencyStatus(participant)}})</td>
-            <td *ngFor="let event of this.eventsToShow" [class]="participantWasPresentInEvent(participant, event)"></td>            
+                <td class="fixed">{{fullnameFlag ? participant.name : participant.alias}} ({{frequencyStatus(participant)}})</td>
+                <td *ngFor="let event of this.eventsToShow" [class]="participantWasPresentInEvent(participant, event)"></td>
         </tr>
 
         <tr>
