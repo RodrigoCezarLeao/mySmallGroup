@@ -50,4 +50,8 @@ export class ReportComponent {
       this.eventsToShow = this.group.events.filter(x => x.dateStr >= this.filterStartDate && x.dateStr <= this.filterFinalDate)
     }
   }
+
+  participantPresentAtLeastOnce(participant: participant){
+    return this.eventsToShow.filter(x => x.presence.includes(participant.id)).length > 0;
+  }
 }

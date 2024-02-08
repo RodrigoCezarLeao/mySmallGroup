@@ -23,6 +23,11 @@ export const OPEN_IMG_DIALOG = "OPEN_IMG_DIALOG";
 export const CLOSE_IMG_DIALOG_DELETE = "CLOSE_IMG_DIALOG_DELETE";
 
 
+// Occurs when the event description must be shown in diferent dialog
+export const OPEN_DESC_DIALOG = "OPEN_DESC_DIALOG";
+
+// Occurs when the event presence must be shown in diferent dialog
+export const OPEN_PRESENCE_DIALOG = "OPEN_PRESENCE_DIALOG";
 
 
 export interface HubEvent {

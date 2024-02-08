@@ -14,6 +14,8 @@ import { ShuffleDialogComponent } from './component/calendar/shuffle-dialog/shuf
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReportComponent } from './component/report/report.component';
 import { ImgDialogComponent } from './component/calendar/img-dialog/img-dialog.component';
+import { DescriptionDialogComponent } from './component/calendar/description-dialog/description-dialog.component';
+import { PresenceDialogComponent } from './component/calendar/presence-dialog/presence-dialog.component';
 
   
 
@@ -29,7 +31,9 @@ import { ImgDialogComponent } from './component/calendar/img-dialog/img-dialog.c
     EventManagerComponent,
     ShuffleDialogComponent,
     ReportComponent,
-    ImgDialogComponent,    
+    ImgDialogComponent,
+    DescriptionDialogComponent,
+    PresenceDialogComponent,    
   ],
   imports: [
     BrowserModule,

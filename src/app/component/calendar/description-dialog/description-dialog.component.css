@@ -1,0 +1,29 @@
+div#description_modal {
+    position: fixed;
+    top: 25px;
+    left: 5%;
+    right: 5%;    
+    background: white;
+    overflow: hidden;
+    padding: 5px;
+    height: 90vh;
+    background: var(--bege);
+    border: 1px solid var(--wine);
+    z-index: 13;
+    text-align: center;
+    padding: 5px;
+}
+
+
+textarea {
+    width: 95%;
+    border: 1px solid black;
+    text-align: center;
+    resize: none;
+    font-size: 1.1em;
+    background: rgba(246, 114, 128, .2);
+    height: 88vh;
+}
+
+
+
