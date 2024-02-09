@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { OPEN_DESC_DIALOG } from 'src/app/events';
+import { CLOSE_DIALOG, OPEN_DESC_DIALOG } from 'src/app/events';
 import { HubService } from 'src/app/service/hub.service';
+import { TranslateService } from 'src/app/service/translate.service';
 
 @Component({
   selector: 'app-description-dialog',
@@ -11,8 +12,13 @@ export class DescriptionDialogComponent {
   @ViewChild("textarea") textarea: any;  
   description = "";
   updateDesc: any;
-
-  constructor(private hub: HubService){
+  disabledTextarea = false;
+  
+  closeDialog(){
+    this.hub.notify(CLOSE_DIALOG);
+  }
+  
+  constructor(private hub: HubService, public intl: TranslateService){
     this.hub.subscribe(OPEN_DESC_DIALOG, (args: any) => {
       this.description = args.desc;
       setTimeout(() => {        
@@ -20,7 +26,10 @@ export class DescriptionDialogComponent {
         this.textarea.nativeElement.blur();
       }, 250);
 
-      this.updateDesc = args.updateDesc;
+      if(!args.updateDesc)
+        this.disabledTextarea = true;
+      else
+        this.updateDesc = args.updateDesc;
     });
 
   }

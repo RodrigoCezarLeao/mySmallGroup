@@ -1,15 +1,23 @@
-<div id="presence_modal">
-    <div id="control">
-        <span>{{intl.translate("report_filter_fullname_flag")}}</span>
-        <span class="material-symbols-outlined" style="font-size: 2em;" (click)="toggleFlagName()">{{isAliasToShow}}</span>
-    </div>
-
-    <div id="participants_frequency">
-        <div *ngFor="let part of participants" (click)="manageFrequency(part)" [class]="isParticipantPresent(part) ? 'presence' : ''">
-            {{isAliasToShow === "toggle_off" ? part.alias : part.name}}
-        </div>
-    </div>
+<div id="dialog_container">
     
+    <header>
+        <h3>{{intl.translate("dialog_title_presence")}}</h3>
+        <span class="material-symbols-outlined" (click)="closeDialog()" id="close">close</span>
+    </header>
+    
+
+    <section class="dialog_content">
+        <!-- YOUR CONTENT GOES IN HERE -->
+        <div id="control">
+            <span>{{intl.translate("report_filter_fullname_flag")}}</span>
+            <span class="material-symbols-outlined" style="font-size: 2em;" (click)="toggleFlagName()">{{isAliasToShow}}</span>
+        </div>
+    
+        <div id="participants_frequency">
+            <div *ngFor="let part of participants" (click)="manageFrequency(part)" [class]="isParticipantPresent(part) ? 'presence' : ''">
+                {{isAliasToShow === "toggle_off" ? part.alias : part.name}}
+            </div>
+        </div>
+    </section>
+
 </div>
-
-

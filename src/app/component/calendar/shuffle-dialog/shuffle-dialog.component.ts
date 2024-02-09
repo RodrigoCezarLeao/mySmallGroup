@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { CLOSE_SHUFFLE_DIALOG, OPEN_SHUFFLE_DIALOG } from 'src/app/events';
+import { CLOSE_DIALOG, OPEN_SHUFFLE_DIALOG } from 'src/app/events';
 import { HubService } from 'src/app/service/hub.service';
+import { TranslateService } from 'src/app/service/translate.service';
 
 @Component({
   selector: 'app-shuffle-dialog',
@@ -12,7 +13,11 @@ export class ShuffleDialogComponent {
   fontSize = "16 px";
   connector = "";
 
-  constructor(private hub: HubService){
+  closeDialog(){
+    this.hub.notify(CLOSE_DIALOG);
+  }
+  
+  constructor(private hub: HubService, public intl: TranslateService){
     this.hub.subscribe(OPEN_SHUFFLE_DIALOG, (args: any) => {
       this.fontSize = `font-size: ${args["template"]["shuffle_dialog_font_size"]}px`;
       this.connector = args["template"]["shuffle_connector_word"];
@@ -20,7 +25,4 @@ export class ShuffleDialogComponent {
     });
   }
 
-  closeDialog(){
-    this.hub.notify(CLOSE_SHUFFLE_DIALOG);
-  }
 }

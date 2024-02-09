@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OPEN_PRESENCE_DIALOG } from 'src/app/events';
+import { CLOSE_DIALOG, OPEN_PRESENCE_DIALOG } from 'src/app/events';
 import { participant } from 'src/app/interface/participant';
 import { HubService } from 'src/app/service/hub.service';
 import { TranslateService } from 'src/app/service/translate.service';
@@ -14,6 +14,10 @@ export class PresenceDialogComponent {
   updatePresence: any;
   participants: participant[] = [];
   isAliasToShow = "toggle_off";
+
+  closeDialog(){
+    this.hub.notify(CLOSE_DIALOG);
+  }
 
   constructor(private hub: HubService, public intl: TranslateService){
     this.hub.subscribe(OPEN_PRESENCE_DIALOG, (args: any) => {

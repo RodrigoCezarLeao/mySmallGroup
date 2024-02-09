@@ -208,6 +208,14 @@ export class TranslateService {
       "pt-br": "Deseja excluir a imagem atual?",
       "en-us": "Do you want to delete current image?",
     },
+    "dialog_title_shuffle": {
+      "pt-br": "Sorteio de Participantes",
+      "en-us": "Participants Shuffling",
+    },
+    "dialog_title_presence": {
+      "pt-br": "Lista de Presença",
+      "en-us": "Presence List",
+    },
     // No use
     "alert_error_empty_title_edition": {
       "pt-br": "O campo do título está vazio.",
