@@ -1,3 +1,14 @@
-<div id="description_modal">
-    <textarea [(ngModel)]="description" #textarea (change)="updateDesc(description)"></textarea>
+<div id="dialog_container">
+    
+    <header>
+        <h3>{{intl.translate("dialog_title_shuffle")}}</h3>
+        <span class="material-symbols-outlined" (click)="closeDialog()" id="close">close</span>
+    </header>
+    
+
+    <section class="dialog_content">
+        <!-- YOUR CONTENT GOES IN HERE -->
+        <textarea [(ngModel)]="description" #textarea (change)="updateDesc(description)" [disabled]="disabledTextarea"></textarea>
+    </section>
+
 </div>

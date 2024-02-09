@@ -1,27 +1,31 @@
-div {
+/* General Dialog */
+div#dialog_container {     
     position: fixed;
-    top: 20px;
+    top: 25px;
     left: 5%;
     right: 5%;
-    /* background: white; */
     overflow: hidden;
-    padding: 5px;
+    overflow-y: scroll;
+    height: 90vh;
     background: var(--bege);
     border: 1px solid var(--wine);
     z-index: 13;
-    /* text-align: center; */
-    height: 85vh;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    padding: 5px;
 }
 
+div#dialog_container header {position: relative;}
+div#dialog_container header h3 {margin-top: 5px; margin-bottom: 20px;}
+div#dialog_container header span#close { cursor: pointer; position: absolute; z-index: 14; right: 0px; top: -5px; }
+
+
+/* Component Style */
 div img {
     width: 100%;
 }
 
-div span {
+div span#delete-img {
+    cursor: pointer;
     position: absolute;
     top: 5px;
     left: 5px;

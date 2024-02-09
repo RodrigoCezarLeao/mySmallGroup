@@ -1,4 +1,15 @@
-<div>
-    <span class="material-symbols-outlined" id="delete-img" (click)="deleteImg()">delete</span>
-    <img [src]="imgUrl" />
+<div id="dialog_container">
+    
+    <header>
+        <h3>{{intl.translate("dialog_title_shuffle")}}</h3>
+        <span class="material-symbols-outlined" (click)="closeDialog()" id="close">close</span>
+    </header>
+    
+
+    <section class="dialog_content">
+        <!-- YOUR CONTENT GOES IN HERE -->
+        <span class="material-symbols-outlined" id="delete-img" (click)="deleteImg()">delete</span>
+        <img [src]="imgUrl" />
+    </section>
+
 </div>

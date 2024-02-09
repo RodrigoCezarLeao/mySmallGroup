@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { EDIT_EVENT, RETURN_EDIT_EVENT_PAGE } from 'src/app/events';
+import { EDIT_EVENT, OPEN_DESC_DIALOG, RETURN_EDIT_EVENT_PAGE, OPEN_DIALOG } from 'src/app/events';
 import { firstDayOfMonth, formatDayMonthYear, formatMonthYear, formatYearMonthDay, howManyDaysInMonth, isItToday } from 'src/app/helpers/date_time';
 import { createEmptyEvent, event } from 'src/app/interface/event';
 import { emptyGroup, group } from 'src/app/interface/group';
 import { GroupService } from 'src/app/service/group.service';
 import { HubService } from 'src/app/service/hub.service';
 import { TranslateService } from 'src/app/service/translate.service';
+import { DescriptionDialogComponent } from '../description-dialog/description-dialog.component';
 
 @Component({
   selector: 'app-events-view',
@@ -20,7 +22,7 @@ export class EventsViewComponent {
   daysLabels: string[] = [];
   formatMonthYear = formatMonthYear;
   
-  constructor(public intl: TranslateService, private router: Router, private groupService: GroupService, private hub: HubService){
+  constructor(public intl: TranslateService, private router: Router, private groupService: GroupService, private hub: HubService, public dialog: MatDialog){
     this.getGroup();
     this.generateCalendarMonthLabels();
     this.handleCalendarClick(this.referenceDate.getDate().toString());
@@ -126,6 +128,16 @@ export class EventsViewComponent {
       this.group.events = newEventsList;
       this.handleCalendarClick(this.referenceDate.getDate().toString());
     }
+  }
+
+  openDescModal(event: event){
+    this.hub.notifyArgs(OPEN_DIALOG, {
+      component: DescriptionDialogComponent, 
+      data: {
+        desc: event.description, 
+        updateDesc: false
+      }
+    })
   }
 
 }

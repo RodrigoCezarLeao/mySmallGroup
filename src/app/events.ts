@@ -29,6 +29,12 @@ export const OPEN_DESC_DIALOG = "OPEN_DESC_DIALOG";
 // Occurs when the event presence must be shown in diferent dialog
 export const OPEN_PRESENCE_DIALOG = "OPEN_PRESENCE_DIALOG";
 
+// Occurs when any dialog needs to be opened
+export const OPEN_DIALOG = "OPEN_DIALOG";
+
+// Occurs when any dialog needs to be closed
+export const CLOSE_DIALOG = "CLOSE_DIALOG";
+
 
 export interface HubEvent {
     eventId: string;

@@ -27,11 +27,13 @@
         <table id="day_activities_table">
             <tr>
                 <th>{{intl.translate("events_manager_title")}}</th>
+                <th>{{intl.translate("events_manager_description")}}</th>
                 <th>{{intl.translate("events_view_edit")}}</th>
                 <th>{{intl.translate("events_view_delete")}}</th>
             </tr>
             <tr *ngFor="let event of dayEvents">
                 <td>{{event.title}}</td>
+                <td (click)="openDescModal(event)"><span class="material-symbols-outlined">description</span></td>
                 <td (click)="editEvent(event)"><span class="material-symbols-outlined">edit</span></td>
                 <td (click)="deleteEvent(event)"><span class="material-symbols-outlined">delete</span></td>
             </tr>

@@ -1,11 +1,11 @@
-div#description_modal {
+/* General Dialog */
+div#dialog_container {     
     position: fixed;
     top: 25px;
     left: 5%;
-    right: 5%;    
-    background: white;
+    right: 5%;
     overflow: hidden;
-    padding: 5px;
+    overflow-y: scroll;
     height: 90vh;
     background: var(--bege);
     border: 1px solid var(--wine);
@@ -14,7 +14,12 @@ div#description_modal {
     padding: 5px;
 }
 
+div#dialog_container header {position: relative;}
+div#dialog_container header h3 {margin-top: 5px; margin-bottom: 20px;}
+div#dialog_container header span#close { cursor: pointer; position: absolute; z-index: 14; right: 0px; top: -5px; }
 
+
+/* Component Style */
 textarea {
     width: 95%;
     border: 1px solid black;
@@ -22,8 +27,12 @@ textarea {
     resize: none;
     font-size: 1.1em;
     background: rgba(246, 114, 128, .2);
-    height: 88vh;
+    height: 75vh;
 }
 
+
+textarea:disabled {
+    color: black;
+}
 
 

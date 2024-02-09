@@ -1,11 +1,11 @@
-div#presence_modal {
+/* General Dialog */
+div#dialog_container {     
     position: fixed;
     top: 25px;
     left: 5%;
-    right: 5%;    
-    background: white;
+    right: 5%;
     overflow: hidden;
-    padding: 5px;
+    overflow-y: scroll;
     height: 90vh;
     background: var(--bege);
     border: 1px solid var(--wine);
@@ -14,6 +14,12 @@ div#presence_modal {
     padding: 5px;
 }
 
+div#dialog_container header {position: relative;}
+div#dialog_container header h3 {margin-top: 5px; margin-bottom: 20px;}
+div#dialog_container header span#close { cursor: pointer; position: absolute; z-index: 14; right: 0px; top: -5px; }
+
+
+/* Component Style */
 div#control {
     margin: 15px;
     display: flex;
@@ -27,13 +33,9 @@ div#control span {
 }
 
 div#participants_frequency {
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* gap: 10px; */
-    /* justify-content: center; */
     padding: 5px;
     overflow-y: auto;
-    height: 75vh;
+    height: 65vh;
     border: 1px solid var(--wine);
 }
 

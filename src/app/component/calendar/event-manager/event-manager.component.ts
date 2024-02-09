@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { CLOSE_IMG_DIALOG_DELETE, CLOSE_SHUFFLE_DIALOG, EDIT_EVENT, OPEN_DESC_DIALOG, OPEN_IMG_DIALOG, OPEN_PRESENCE_DIALOG, OPEN_SHUFFLE_DIALOG, RETURN_EDIT_EVENT_PAGE } from 'src/app/events';
+import { CLOSE_IMG_DIALOG_DELETE, CLOSE_SHUFFLE_DIALOG, EDIT_EVENT, OPEN_DESC_DIALOG, OPEN_DIALOG, OPEN_IMG_DIALOG, OPEN_PRESENCE_DIALOG, OPEN_SHUFFLE_DIALOG, RETURN_EDIT_EVENT_PAGE } from 'src/app/events';
 import { createEmptyEvent, event } from 'src/app/interface/event';
 import { emptyGroup, group } from 'src/app/interface/group';
 import { participant } from 'src/app/interface/participant';
@@ -131,13 +131,24 @@ export class EventManagerComponent {
       }
     }
     
-    this.dialog.open(ShuffleDialogComponent, {width: '350px', position: {top: '-200px', right: '-150px'}});    
-    this.hub.notifyArgs(OPEN_SHUFFLE_DIALOG, {desc: desc, template: this.group.template});
+    this.hub.notifyArgs(OPEN_DIALOG, {
+      component: ShuffleDialogComponent, 
+      data: {
+        desc: desc, 
+        template: this.group.template
+      }
+    });
   }
 
   openImgModal(img: any){
-    this.dialog.open(ImgDialogComponent, {width: '350px'});
-    this.hub.notifyArgs(OPEN_IMG_DIALOG, {imgUrl: img.url, imgId: img.id});
+    this.hub.notifyArgs(OPEN_DIALOG, {
+      component: ImgDialogComponent, 
+      data: {
+        imgUrl: img.url, 
+        imgId: img.id
+      }
+    });
+
     this.hub.subscribe(CLOSE_IMG_DIALOG_DELETE, (args: any) => {
       this.imgUrls = this.imgUrls.filter((x: any) => x.id !== args[0]);
       this.dialog.closeAll();
@@ -145,17 +156,27 @@ export class EventManagerComponent {
   }
 
   openDescriptionModal(){
-    this.dialog.open(DescriptionDialogComponent, {width: '350px'});    
-    this.hub.notifyArgs(OPEN_DESC_DIALOG, {desc: this.event.description, updateDesc: (newDesc: string) => {
-      this.event.description = newDesc;
-    }});
+    this.hub.notifyArgs(OPEN_DIALOG, {
+      component: DescriptionDialogComponent, 
+      data: {
+        desc: this.event.description, 
+        updateDesc: (newDesc: string) => {
+          this.event.description = newDesc;
+        }
+      }
+    });
   }
   
   openPresenceModal(){
-    this.dialog.open(PresenceDialogComponent, {width: '350px'});    
-    this.hub.notifyArgs(OPEN_PRESENCE_DIALOG, {presence: this.event.presence, participants: this.group.participants, updatepresence: (newPresence: string[]) => {
-      this.event.presence = newPresence;
-    }});
+    this.hub.notifyArgs(OPEN_DIALOG, {
+      component: PresenceDialogComponent, 
+      data: {
+        presence: this.event.presence, 
+        participants: this.group.participants, updatepresence: (newPresence: string[]) => {
+          this.event.presence = newPresence;
+        }
+      }
+    });
   }
 
 }
