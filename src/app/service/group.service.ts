@@ -102,6 +102,7 @@ export class GroupService {
           }
     `};
     
+    
     const res = (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery))?.data?.updateGroup;
     await this.publishGroup();
     return res;
