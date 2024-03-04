@@ -25,13 +25,13 @@ export class ReportComponent {
   async getGroup(){
     if (await this.groupService.init()){
       this.group = this.groupService.group;
-      this.eventsToShow = structuredClone(this.group.events);
+      this.eventsToShow = structuredClone(this.group.events).filter((x: event) => x.frequencyFlag);
     }
   }
 
   frequencyStatus(participant: participant){
-    const participantEvents = this.group.events.filter(x => x.presence.includes(participant.id));
-    return `${participantEvents.length}/${this.group.events.length}`;
+    const participantEvents = this.eventsToShow.filter(x => x.presence.includes(participant.id));
+    return `${participantEvents.length}/${this.eventsToShow.length}`;
   }
 
   eventDate(event: event){

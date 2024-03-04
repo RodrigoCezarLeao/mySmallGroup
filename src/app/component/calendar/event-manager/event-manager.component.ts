@@ -65,6 +65,7 @@ export class EventManagerComponent {
   }  
   
   async saveEvent(){
+    debugger;
     if (!this.isButtonDisabled()){
       this.hub.notify(CLOSE_SHUFFLE_DIALOG);
       this.isSaving = true;

@@ -216,6 +216,10 @@ export class TranslateService {
       "pt-br": "Lista de Presença",
       "en-us": "Presence List",
     },
+    "event_manager_frequency_flag": {
+      "pt-br": "Contar Presença?",
+      "en-us": "Show in Presence?",
+    },
     // No use
     "alert_error_empty_title_edition": {
       "pt-br": "O campo do título está vazio.",

@@ -37,4 +37,9 @@
         <input type="file" multiple [src]="files" class="upload_files_input" #files/>
     </div>
 
+    <div class="shuffle_line">
+        <label>{{intl.translate("event_manager_frequency_flag")}}</label>
+        <input type="checkbox" [(ngModel)]="event.frequencyFlag" #files/>
+    </div>
+
 </section>

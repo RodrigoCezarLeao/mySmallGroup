@@ -42,7 +42,7 @@ export class EventphotoService {
         
 
     const res = (await baseGraphCMSFetch(token.apiUrl, token.authToken, cmsQuery))?.data;    
-    return res.eventPhotos.map((x: any) => ({id: x.id, url: x.img.url}) );
+    return res?.eventPhotos.map((x: any) => ({id: x.id, url: x.img.url}) ) ?? [];
   }
 
   async uploadAsset(asset: FormData, eventId: string){    

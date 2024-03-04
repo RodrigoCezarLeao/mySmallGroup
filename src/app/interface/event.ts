@@ -7,6 +7,7 @@ export interface event {
     title: string;
     description: string;    
     presence: string[];
+    frequencyFlag: boolean;
 }
 
 
@@ -17,5 +18,6 @@ export const createEmptyEvent = () => {
         title: "",
         description: "",        
         presence: [],
+        frequencyFlag: false,
     }
 }
